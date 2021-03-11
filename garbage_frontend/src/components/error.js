@@ -1,6 +1,7 @@
 import React from "react";
+import {connect} from 'react-redux';
 
-function Error (props){
+const Error = (props) => {
 
         return(
             <div className="App">
@@ -11,4 +12,11 @@ function Error (props){
         )
 }
 
-export  default  Error;
+// const mapStateToProps = state => {
+//     console.log(state);
+//     return {
+//         syncError: state.error.er
+//     };
+// }
+
+export  default connect(null, null)(Error);
