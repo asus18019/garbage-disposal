@@ -27,3 +27,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('update', [\App\Http\Controllers\UserController::class, 'userUpdate']);
 });
 
+Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
+    Route::get('userPerm', [\App\Http\Controllers\UserController::class, 'test2']);
+});
+
+Route::group(['middleware' => ['auth:sanctum', 'role:user|admin']], function () {
+    Route::get('adminPerm', [\App\Http\Controllers\UserController::class, 'test1']);
+});
+

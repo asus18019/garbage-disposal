@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-use const http\Client\Curl\Features\HTTP2;
 
 class AuthController extends Controller
 {
@@ -32,6 +31,7 @@ class AuthController extends Controller
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
             ]);
+            $user->assignRole('user');
             return $user;
         }
     }

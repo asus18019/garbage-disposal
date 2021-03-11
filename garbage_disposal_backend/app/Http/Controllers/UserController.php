@@ -36,4 +36,12 @@ class UserController extends Controller
             ], Response::HTTP_OK);
         }
     }
+
+    public function test1(){
+        return response(['message' => 'Это видит только admin и user']);
+    }
+
+    public function test2(){
+        return response(['message' => 'Это видит только admin']);
+    }
 }
