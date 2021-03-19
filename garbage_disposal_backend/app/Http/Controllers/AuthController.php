@@ -2,38 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequests\RegisterPostRequest;
 use Cookie;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
-    public function register(Request $request){
-        $rules =[
-            'first_name' => ['required', 'string', 'min:3', 'max:255'],
-            'last_name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'max:600', 'unique:App\Models\User'],
-            'password' => ['required', 'min:8'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-
-        if($validator->fails()){
-            return response([$validator->errors()], Response::HTTP_BAD_REQUEST);
-        } else {
-            $user = User::create([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'email' => $request->input('email'),
-                'password' => Hash::make($request->input('password')),
-            ]);
-            $user->assignRole('user');
-            return $user;
-        }
+    public function register(RegisterPostRequest $request){
+        $user = User::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+        $user->assignRole('user');
+        return $user;
     }
 
     public function login(Request $request){
