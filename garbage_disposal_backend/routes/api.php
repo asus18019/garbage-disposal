@@ -27,9 +27,20 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::get('userPerm', [\App\Http\Controllers\UserController::class, 'test2']);
+
+    Route::prefix('garbage')->group(function () {
+        Route::post('/create', [App\Http\Controllers\garbageController::class, 'createGarbageType']);
+        Route::put('/update/{id}', [\App\Http\Controllers\garbageController::class, 'updateGarbage']);
+    });
+
+    Route::prefix('house')->group(function () {
+        Route::get('/houses', [\App\Http\Controllers\houseController::class, 'getHouses']);
+        Route::put('/update/{id}', [\App\Http\Controllers\houseController::class, 'updateHouse']);
+        Route::post('/create', [\App\Http\Controllers\houseController::class, 'createHouse']);
+    });
 });
 
-Route::group(['middleware' => ['auth:sanctum', 'role:user|admin']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'role:user|moderator|admin']], function () {
     Route::get('adminPerm', [\App\Http\Controllers\UserController::class, 'test1']);
 
     Route::prefix('user')->group(function () {
@@ -38,5 +49,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:user|admin']], function () 
         Route::put('/update', [\App\Http\Controllers\UserController::class, 'userUpdate']);
     });
 
+});
+
+Route::group(['middleware' => ['auth:sanctum', 'role:moderator|admin']], function () {
+    Route::get('/house/users', [\App\Http\Controllers\houseController::class, 'getUsersInHouse']);
 });
 
