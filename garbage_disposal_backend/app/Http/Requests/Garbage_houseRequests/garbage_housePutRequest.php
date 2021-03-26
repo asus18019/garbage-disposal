@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\GarbageRequests;
+namespace App\Http\Requests\Garbage_houseRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class garbagePostRequest extends FormRequest
+class garbage_housePutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class garbagePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'garbage' => ['required', 'string','min:3', 'max:255', 'unique:App\Models\garbageModel,garbage'],
-            'description' => ['required', 'string','min:8', 'max:255'],
+            'maxFullness' => ['required', 'numeric','min:1', 'max:1000'],
         ];
     }
 }

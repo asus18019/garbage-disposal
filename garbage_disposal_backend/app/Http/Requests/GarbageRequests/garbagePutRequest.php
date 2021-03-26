@@ -24,7 +24,7 @@ class garbagePutRequest extends FormRequest
     public function rules()
     {
         return [
-            'garbage' => ['string','min:3', 'max:255', 'unique:App\Models\gargabeModel,garbage'],
+            'garbage' => ['string','min:3', 'max:255', 'unique:App\Models\garbageModel,garbage'],
             'description' => ['string','min:8', 'max:255'],
         ];
     }

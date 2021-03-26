@@ -12,6 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class houseController extends Controller
 {
+    private function authenticatedModeratorID(){
+        return Auth::user()->getAuthIdentifier(); //todo export method in parent class because its duplicates
+    }
+
     public function getHouses(){
         $houses = houseModel::all();
         return response(['all houses' => $houses], Response::HTTP_OK);
@@ -20,7 +24,7 @@ class houseController extends Controller
     public function updateHouse(UpdatePutRequest $request, $id){
         $house = houseModel::find($id);
         if(!$house){
-            return response(['error' => 'house doesnt exist'], Response::HTTP_EXPECTATION_FAILED);// todo change the responce code
+            return response(['error' => 'house doesnt exist'], Response::HTTP_EXPECTATION_FAILED);// todo change the response code
         }
         $house->update($request->all());
         return response(['updated houses' => $house], Response::HTTP_OK);
@@ -36,7 +40,7 @@ class houseController extends Controller
     }
 
     public function getUsersInHouse(){
-        $authenticatedModerator = User::find(Auth::user()->getAuthIdentifier());
+        $authenticatedModerator = User::find($this->authenticatedModeratorID());
         $result = User::where('houseID', $authenticatedModerator->houseID)->get();
         return response(['users that lives in my house' => $result], Response::HTTP_OK);
     }

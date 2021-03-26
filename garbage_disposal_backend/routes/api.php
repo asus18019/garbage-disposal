@@ -53,5 +53,12 @@ Route::group(['middleware' => ['auth:sanctum', 'role:user|moderator|admin']], fu
 
 Route::group(['middleware' => ['auth:sanctum', 'role:moderator|admin']], function () {
     Route::get('/house/users', [\App\Http\Controllers\houseController::class, 'getUsersInHouse']);
+
+    Route::prefix('container')->group(function () { // this group of routes works only for moderator accounts
+        Route::post('/create', [\App\Http\Controllers\garbage_houseController::class, 'createContainer']);
+        Route::delete('/remove/{containerID}', [\App\Http\Controllers\garbage_houseController::class, 'removeContainer']);
+        Route::put('/update/{containerID}', [\App\Http\Controllers\garbage_houseController::class, 'updateContainer']);
+        Route::get('/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainers']);
+    });
 });
 
