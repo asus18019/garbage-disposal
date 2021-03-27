@@ -12,10 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class houseController extends Controller
 {
-    private function authenticatedModeratorID(){
-        return Auth::user()->getAuthIdentifier(); //todo export method in parent class because its duplicates
-    }
-
     public function getHouses(){
         $houses = houseModel::all();
         return response(['all houses' => $houses], Response::HTTP_OK);

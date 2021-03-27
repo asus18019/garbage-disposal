@@ -26,6 +26,8 @@ class garbage_housePostRequest extends FormRequest
         return [
             'garbageID' => ['required', 'numeric'],
             'maxFullness' => ['required', 'numeric','min:1', 'max:1000'],
+            'export_price' => ['required', 'numeric','min:1', 'max:100'],
+            'recycling_price' => ['required', 'numeric','min:1', 'max:100'],
         ];
     }
 }

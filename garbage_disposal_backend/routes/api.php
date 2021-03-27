@@ -60,5 +60,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:moderator|admin']], functio
         Route::put('/update/{containerID}', [\App\Http\Controllers\garbage_houseController::class, 'updateContainer']);
         Route::get('/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainers']);
     });
+
+    Route::prefix('price')->group(function () { // this group of routes works only for moderator accounts
+
+    });
 });
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class garbage_houseModel extends Model
+class priceModel extends Model
 {
     use HasFactory;
 
@@ -14,14 +14,14 @@ class garbage_houseModel extends Model
      *
      * @var string
      */
-    protected $table = 'garbage_house';
+    protected $table = 'price';
 
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'garbage_houseID';
+    protected $primaryKey = 'priceID';
 
     /**
      * Indicates if the model should be timestamped.
@@ -36,10 +36,7 @@ class garbage_houseModel extends Model
      * @var array
      */
     protected $fillable = [
-        'houseID',
-        'garbageID',
-        'currentFullness',
-        'maxFullness',
-        'priceID',
+        'export_price',
+        'recycling_price',
     ];
 }
