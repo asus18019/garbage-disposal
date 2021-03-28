@@ -43,6 +43,10 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
 Route::group(['middleware' => ['auth:sanctum', 'role:user|moderator|admin']], function () {
     Route::get('adminPerm', [\App\Http\Controllers\UserController::class, 'test1']);
 
+    Route::prefix('history')->group(function () {
+        Route::post('/create', [\App\Http\Controllers\historyController::class, 'createRecord']);
+    });
+
     Route::prefix('user')->group(function () {
         Route::get('/user', [\App\Http\Controllers\AuthController::class, 'user']);
         Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
