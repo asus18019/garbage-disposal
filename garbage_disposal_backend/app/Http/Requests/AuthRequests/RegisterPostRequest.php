@@ -26,7 +26,7 @@ class RegisterPostRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'min:3', 'max:255'],
             'last_name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'max:600', 'unique:App\Models\User'],
+            'email' => ['required', 'string', 'max:600', 'email' ,'unique:App\Models\User'],
             'password' => ['required', 'min:8'],
         ];
     }

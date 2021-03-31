@@ -1,0 +1,21 @@
+.containerFLname {
+    display: flex;
+    justify-content: space-between;
+}
+
+.regg{
+    border-left: 5px solid #34c972;
+}
+
+.btn1 {
+    background-color: #34c972;
+    border: 0px;
+}
+
+.btn1:hover {
+    background-color: #2bab60;
+}
+
+.regg h2 {
+    color: #34c972;;
+}

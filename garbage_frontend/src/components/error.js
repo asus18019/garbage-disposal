@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 const Error = (props) => {
 
         return(
-            <div className="App">
-                {
-                    [props.errorText]
-                }
+            <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                    {[props.errorText]}
+                </div>
             </div>
         )
 }

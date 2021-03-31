@@ -1,0 +1,61 @@
+
+.register-form {
+    padding: 25px 15px;
+    border-radius: 0px 40px 0px 40px;
+    margin: 50px 0px;
+    border: 1px solid #ddd;
+    float: left;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px #cacaca;
+    border-left: 5px solid #289cbd;
+}
+.register-form .form-group {
+    position: relative;
+}
+.register-form .hint {
+    display: none;
+    position: absolute;
+    right: 0;
+}
+.register-form span {
+    display: block;
+    padding: 2px 15px;
+    border-radius: 4px;
+}
+
+.register-form h2 {
+    color: #289cbd;
+}
+
+.btn {
+    background-color: #289cbd;
+    border: 0px;
+}
+
+.btn:hover {
+    background-color: #2de0da;
+}
+
+.SubmitButtonDiv {
+    float: right;
+}
+
+.textReg{
+    padding-top: 14px;
+    float: left;
+}
+
+.text{
+    text-decoration: none;
+    font-style: oblique;
+}
+
+.text:hover {
+    text-decoration: underline;
+}
+
+.contai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

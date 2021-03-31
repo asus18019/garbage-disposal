@@ -5,7 +5,9 @@ function Navbar(){
     return(
         <div>
             <div className="navbar navbar-light bg-light">
-                <a className="navbar-brand" href="/">Garbage disposal</a>
+                <div>
+                    <a className="navbar-brand" href="/">Garbage disposal</a>
+                </div>
 
                 <div className="AuthContainer navbar-brand">
                     <div className="d-flex justify-content-end bd-highlight">
@@ -18,7 +20,6 @@ function Navbar(){
                     </div>
                 </div>
             </div>
-
 
         </div>
     )
