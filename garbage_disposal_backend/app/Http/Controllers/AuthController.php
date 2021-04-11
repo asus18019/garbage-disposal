@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequests\RegisterPostRequest;
-use Cookie;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -34,7 +35,8 @@ class AuthController extends Controller
 
         $token = $user->createToken('token')->plainTextToken;
 
-        $cookie = cookie('jwt', $token, 60*24);
+        $cookie = cookie('jwt', $token, 60*24, '/', '', true, true, '', 'none');
+//        $cookie = cookie('jwt', $token, 60*24);
 
         return response([
             'messages' => 'Success',

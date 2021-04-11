@@ -6,7 +6,7 @@ const Error = (props) => {
         return(
             <div className="form-group">
                 <div className="alert alert-danger" role="alert">
-                    {[props.errorText]}
+                    <li key={props.errorText}>{[props.errorText]}</li>
                 </div>
             </div>
         )

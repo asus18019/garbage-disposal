@@ -1,11 +1,12 @@
 import React from 'react';
 
-function Home(){
+function Admin(){
+
     return(
         <div className="App">
-            Home
+            Admin page
         </div>
     )
 }
 
-export default Home;
+export default Admin;

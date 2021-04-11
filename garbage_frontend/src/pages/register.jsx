@@ -2,22 +2,27 @@ import React, {useState}from 'react';
 import axios from 'axios';
 import Error from "../components/error";
 import  "./css files/register.css"
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import { ADD_USER, REMOVE_USER } from "../store/userReducer";
 
 
 function Register(){
+    const dispatch = useDispatch();
 
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const[redirect, setRedirect] = useState(false);
+
     const [error, setError] = useState([]);
 
     const submit = async (e) => {
         e.preventDefault();
 
-        setError([])
+        setError([]);
 
         const response = await fetch('http://127.0.0.1:8000/api/register', {
             method: 'POST',
@@ -37,7 +42,7 @@ function Register(){
                 setError(error => [...error, content.errors[key].toString()]);
             }
         } else {
-            console.log(content);
+            setRedirect(true);
         }
 
         // const data = {
@@ -57,6 +62,10 @@ function Register(){
         //     }
         // )
 
+    }
+
+    if(redirect){
+        return <Redirect to='/login'/>
     }
 
     return(
