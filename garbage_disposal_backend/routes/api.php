@@ -26,6 +26,9 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
+    Route::get('users', [\App\Http\Controllers\UserController::class, 'getUsers']);
+    Route::put('users/user/update', [\App\Http\Controllers\UserController::class, 'userUpdateForAdmins']);
+
     Route::get('userPerm', [\App\Http\Controllers\UserController::class, 'test2']);
 
     Route::prefix('garbage')->group(function () {

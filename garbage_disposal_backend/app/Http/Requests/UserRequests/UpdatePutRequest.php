@@ -27,7 +27,8 @@ class UpdatePutRequest extends FormRequest
             'first_name' => ['string','min:3', 'max:255'],
             'last_name' => ['string','min:3', 'max:255'],
             'email' => ['string','min:6', 'max:600', 'unique:App\Models\User'],
-            'password' => ['string','min:8', 'max:600']
+            'password' => ['string','min:8', 'max:600'],
+            'houseID' => ['exists:house,houseID']
         ];
     }
 }

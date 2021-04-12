@@ -1,15 +1,9 @@
 import React, {useState}from 'react';
-import axios from 'axios';
 import Error from "../components/error";
 import  "./css files/register.css"
 import {Link, Redirect} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import { ADD_USER, REMOVE_USER } from "../store/userReducer";
-
 
 function Register(){
-    const dispatch = useDispatch();
-
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -44,24 +38,6 @@ function Register(){
         } else {
             setRedirect(true);
         }
-
-        // const data = {
-        //     first_name,
-        //     last_name,
-        //     email,
-        //     password,
-        // }
-        //
-        // axios.post('http://127.0.0.1:8000/api/register', data).then(
-        //     res => {
-        //         console.log(res.data.first_name);
-        //     }
-        // ).catch(
-        //     err => {
-        //         console.log(err);
-        //     }
-        // )
-
     }
 
     if(redirect){

@@ -14,7 +14,7 @@ class houseController extends Controller
 {
     public function getHouses(){
         $houses = houseModel::all();
-        return response(['all houses' => $houses], Response::HTTP_OK);
+        return response(['all_houses' => $houses], Response::HTTP_OK);
     }
 
     public function updateHouse(UpdatePutRequest $request, $id){

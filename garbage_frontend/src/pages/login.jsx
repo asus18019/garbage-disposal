@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import Error from "../components/error";
 import {useDispatch, useSelector} from "react-redux";
-import {FETCH_USER, FETCH_USER_FAILURE, LOGIN_USER} from "../store/userReducer";
+import {FETCH_USER, FETCH_USER_FAILURE} from "../store/userReducer";
 import  "./css files/login.css"
 import {GetUserByCookie} from "../store/userAC";
 

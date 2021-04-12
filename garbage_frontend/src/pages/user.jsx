@@ -1,6 +1,6 @@
 import React from 'react';
 
-function User(){
+const User = () => {
 
     return(
         <div className="App">

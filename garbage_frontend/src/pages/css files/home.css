@@ -48,3 +48,187 @@
         margin-left: -15rem;
     }
 }
+
+/* Primary Styles */
+
+
+h1 {
+    font-size: 1.4em;
+}
+
+em {
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#menu {
+    width: 14%;
+}
+
+#mainbox{
+    font-size: 24px;
+
+}
+.sidemenu{
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    background-color: #222;
+    z-index: 1;
+    padding-top: 100px;
+}
+.sidemenu a{
+    padding: 8px 8px 8px 64px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #999;
+    display: block;
+}
+.sidemenu a:hover{
+    color: white;
+}
+
+.div11 {
+
+}
+.container11 {
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+    display: flex;
+}
+
+.content {
+    width: 86%;
+}
+
+/*TABLE CSS*/
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+table {
+    width: 100%;
+    flex: 1;
+    display: grid;
+    border-collapse: collapse;
+    /* These are just initial values which are overriden using JavaScript when a column is resized */
+    grid-template-columns:
+    minmax(30px, 1fr)
+    minmax(70px, 1.67fr)
+    minmax(70px, 1.67fr)
+    minmax(150px, 2.1fr)
+    minmax(100px, 1.67fr)
+    minmax(100px, 1.67fr)
+    minmax(100px, 1.67fr)
+    minmax(100px, 2.67fr)
+    minmax(70px, 1fr)
+    minmax(10px, 1fr)
+}
+
+thead,
+tbody,
+tr {
+    display: contents;
+}
+
+th,
+td {
+    padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #6c7ae0;
+    text-align: left;
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: white;
+    position: relative;
+}
+
+th:last-child {
+    border: 0;
+}
+
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0;
+    width: 3px;
+    cursor: col-resize;
+}
+
+.resize-handle:hover,
+    /* The following selector is needed so the handle is visible during resize even if the mouse isn't over the handle anymore */
+.header--being-resized .resize-handle {
+    opacity: 0.5;
+}
+
+th:hover .resize-handle {
+    opacity: 0.3;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #808080;
+}
+
+tr:nth-child(even) td {
+    background: #f8f6ff;
+}
+
+.editIcon {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    cursor: pointer;
+}
+
+.editIcon:Hover {
+    border-bottom: 1px solid black;
+    border-radius: 3px;
+}
+
+.userRow:hover {
+    font-weight: bold;
+}
+
+.houseTable {
+    width: 100%;
+    flex: 1;
+    display: grid;
+    border-collapse: collapse;
+    /* These are just initial values which are overriden using JavaScript when a column is resized */
+    grid-template-columns:
+    minmax(30px, 0.7fr)
+    minmax(70px, 1.67fr)
+    minmax(200px, 2.5fr)
+    minmax(200px, 2.5fr)
+    minmax(100px, 1.1fr)
+    minmax(100px, 1.1fr)
+    minmax(30px, 0.7fr)
+}
