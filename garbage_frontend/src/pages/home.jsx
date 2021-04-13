@@ -11,13 +11,12 @@ function Home(){
     return(
         <div className="App">
             {
-                loading.role === 'user' ? <User />
-                : loading.role === 'moderator' ? <Moderator />
-                : loading.role === 'admin' ? <Admin />
-                :
-                    <div className="loaderDiv">
-                        <div className="loader"></div>
-                    </div>
+                loading.role === 'user' ? <User /> :
+                loading.role === 'moderator' ? <Moderator /> :
+                loading.role === 'admin' ? <Admin /> :
+                <div className="loaderDiv">
+                    <div className="loader"></div>
+                </div>
             }
         </div>
     )

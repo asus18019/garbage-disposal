@@ -1,0 +1,14 @@
+{
+  "navbar.logo": "Утилізація сміття",
+  "navbar.login": "Вхід",
+  "navbar.register": "Реєстрація",
+
+  "loginform.title": "Увійти зараз",
+  "loginform.email": "Емейл",
+  "loginform.password": "Пароль",
+  "loginform.signin": "Вхід",
+  "loginform.enter.email": "Уведи емейл",
+  "loginform.enter.password": "Уведи пароль",
+  "loginform.message": "Якщо у вас немає аккаунта",
+  "loginform.link": "Зареєструйся"
+}

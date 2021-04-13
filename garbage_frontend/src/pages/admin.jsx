@@ -7,33 +7,33 @@ import {SET_PAGE} from "../store/pageReducer";
 import EditUser from "../components/editUser";
 
 const Admin = () => {
-const dispatch = useDispatch();
-const user = useSelector(state => state.register);
-const page = useSelector(state => state.page);
+
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.register);
+    const page = useSelector(state => state.page);
 
     useEffect(() => {
-        dispatch(GetUsers());
-        dispatch(GetHouses());
-
-        },
+            dispatch(GetUsers());
+            dispatch(GetHouses());
+            }, []
     )
 
-const setContent = () => {
-    switch (page.page) {
-        case 'Home':
-            return <div>Hello {user.user.first_name}</div>;
-        case 'Users' || 'Admins':
-            return <UsersTable page = {page} />;
-        case 'Houses':
-            return <HouseTable />;
-        case 'UserEdit':
-            return <EditUser />;
-        default:
-            return ;
+    const setContent = () => {
+        switch (page.page) {
+            case 'Home':
+                return <div>Hello {user.user.first_name}</div>;
+            case 'Users' || 'Admins':
+                return <UsersTable page = {page} />;
+            case 'Houses':
+                return <HouseTable />;
+            case 'UserEdit':
+                return <EditUser />;
+            default:
+                return ;
+        }
     }
-}
 
-const content = setContent();
+    const content = setContent();
 
     return(
         <div className="App">
@@ -46,9 +46,11 @@ const content = setContent();
                         <a href='#' onClick={() => console.log('LOGIN')}>Login</a>
                     </div>
                 </div>
-                <div className="content">{
-                    content
-                }</div>
+                <div className="content">
+                    {
+                        content
+                    }
+                </div>
             </div>
         </div>
     )

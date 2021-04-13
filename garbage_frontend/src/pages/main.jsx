@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Main(){
-    return(
+const Main = () => {
+
+    return (
         <div className="App">
-            Main
+
         </div>
     )
 }

@@ -107,3 +107,11 @@
   border-bottom: 2px solid red;
   font-size: 18px;
 }
+
+.form-select  {
+  width: 120px;
+}
+
+.bd-highlight {
+  align-items: center;
+}

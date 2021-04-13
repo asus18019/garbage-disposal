@@ -1,0 +1,14 @@
+{
+  "navbar.logo": "Garbage disposal",
+  "navbar.login": "Login",
+  "navbar.register": "Registration",
+
+  "loginform.title": "Login Now",
+  "loginform.email": "Email Address",
+  "loginform.password": "Password",
+  "loginform.signin": "Sign in",
+  "loginform.enter.email": "Enter email address",
+  "loginform.enter.password": "Enter password",
+  "loginform.message": "If you dont have account",
+  "loginform.link": "Sign up"
+}

@@ -2,22 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {LOGOUT_USER} from "../store/userReducer";
+import { useTranslation } from "react-i18next";
+import { changeLanguage } from "../translation/i18n";
 
 function Navbar(){
+    const {t, i18n} = useTranslation();
+
     const user = useSelector(state => state.register);
     const dispatch = useDispatch();
-
-    function CookiesDelete() {
-        let cookies = document.cookie.split(";");
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i];
-            let eqPos = cookie.indexOf("=");
-            let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
-            document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            console.log('asdd');
-        }
-    }
 
     const Logout = async () => {
         const response = await fetch('http://127.0.0.1:8000/api/user/logout', {
@@ -27,7 +19,6 @@ function Navbar(){
         });
         const content = await response.json();
         dispatch({type: LOGOUT_USER});
-        CookiesDelete();
         console.log(content);
     }
 
@@ -36,7 +27,8 @@ function Navbar(){
             <div className="navbar navbar-light bg-light">
                 <div className="logoDiv">
                     <img src="https://www.logaster.ru/blog/wp-content/uploads/sites/2/2018/11/0077_t_keep-arkansas-natural-logo_4.png" alt="logo"></img>
-                    <Link className="navbar-brand" to="/">Garbage disposal</Link>
+                    <Link className="navbar-brand" to="/">{t("navbar.logo")}</Link>
+
                 </div>
 
                 <div className="AuthContainer navbar-brand">
@@ -54,17 +46,21 @@ function Navbar(){
                             :
                                 <div className="d-flex justify-content-end bd-highlight">
                                     <ul className="navbar-nav mr-auto">
-                                        <Link to="/login" className="nav-link">Login</Link>
+                                        <Link to="/login" className="nav-link">{t("navbar.login")}</Link>
                                     </ul>
                                     <ul className="navbar-nav mr-auto">
-                                        <Link to="/register" className="nav-link">Register</Link>
+                                        <Link to="/register" className="nav-link">{t("navbar.register")}</Link>
                                     </ul>
                                     <ul className="navbar-nav mr-auto">
-                                        <Link to="/login" className="nav-link" onClick={Logout}>Logout</Link>
+                                        <select className="form-select" aria-label="Default select example">
+                                            <option selected onClick={() => changeLanguage('en')}>English</option>
+                                            <option onClick={() => changeLanguage('ua')}>Ukrainian</option>
+                                        </select>
                                     </ul>
                                 </div>
                     }
                 </div>
+
             </div>
 
         </div>

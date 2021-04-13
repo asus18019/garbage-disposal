@@ -5,8 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {FETCH_USER, FETCH_USER_FAILURE} from "../store/userReducer";
 import  "./css files/login.css"
 import {GetUserByCookie} from "../store/userAC";
+import {useTranslation} from "react-i18next";
+
 
 const Login = () => {
+    const {t, i18n} = useTranslation();
     const loading = useSelector(state => state.register);
     const dispatch = useDispatch();
 
@@ -56,7 +59,7 @@ const Login = () => {
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <form className="register-form" onSubmit={submit}>
-                        <h2 className="text-center">Login Now</h2>
+                        <h2 className="text-center">{t("loginform.title")}</h2>
                         {
                             loading.loading
                                 ?
@@ -74,24 +77,22 @@ const Login = () => {
                                 <div></div>
                         }
                         <div className="form-group">
-                            <label>Email Address</label>
-                            <input type="email" className="form-control" placeholder="Enter email" onChange={e => setEmail(e.target.value)} required></input>
-                                <span className="hint alert-success">Enter you valid email id</span>
+                            <label>{t("loginform.email")}</label>
+                            <input type="email" className="form-control" placeholder={t("loginform.enter.email")} onChange={e => setEmail(e.target.value)} required></input>
                         </div>
 
                         <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" className="form-control" placeholder="Password" onChange={e => setPassword(e.target.value)} required></input>
-                                <span className="hint alert-success">Password should be 8 or up chars </span>
+                            <label>{t("loginform.password")}</label>
+                            <input type="password" className="form-control" placeholder={t("loginform.enter.password")} onChange={e => setPassword(e.target.value)} required></input>
                         </div>
 
                         <hr></hr>
                         <div className="form-group">
                             <div className="SubmitButtonDiv">
-                                <button type="submit" className="btn btn-primary btn-lg">Sign in</button>
+                                <button type="submit" className="btn btn-primary btn-lg">{t("loginform.signin")}</button>
                             </div>
                             <div className="textReg">
-                                <p className="text-center mb-0">If you dont have account <Link to="/register" className="text text-success">Sign up</Link></p>
+                                <p className="text-center mb-0">{t("loginform.message")} <Link to="/register" className="text text-success">{t("loginform.link")}</Link></p>
                             </div>
                         </div>
 
