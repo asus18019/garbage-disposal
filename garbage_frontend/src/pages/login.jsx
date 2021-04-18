@@ -4,7 +4,7 @@ import Error from "../components/error";
 import {useDispatch, useSelector} from "react-redux";
 import {FETCH_USER, FETCH_USER_FAILURE} from "../store/userReducer";
 import  "./css files/login.css"
-import {GetUserByCookie} from "../store/userAC";
+import {GetUserByCookie} from "../store/thunks";
 import {useTranslation} from "react-i18next";
 
 
@@ -64,29 +64,28 @@ const Login = () => {
                             loading.loading
                                 ?
                                 <div className="loaderDiv">
-                                    <div className="loader"></div>
+                                    <div className="loader" />
                                 </div>
                                 :
-                                <div></div>
+                                <div/>
                         }
-
-                        <hr></hr>
+                        <hr/>
                         {
                             error.length > 0 ?
                                 <Error errorText={error}/> :
-                                <div></div>
+                                <div/>
                         }
                         <div className="form-group">
                             <label>{t("loginform.email")}</label>
-                            <input type="email" className="form-control" placeholder={t("loginform.enter.email")} onChange={e => setEmail(e.target.value)} required></input>
+                            <input type="email" className="form-control" placeholder={t("loginform.enter.email")} onChange={e => setEmail(e.target.value)} required />
                         </div>
 
                         <div className="form-group">
                             <label>{t("loginform.password")}</label>
-                            <input type="password" className="form-control" placeholder={t("loginform.enter.password")} onChange={e => setPassword(e.target.value)} required></input>
+                            <input type="password" className="form-control" placeholder={t("loginform.enter.password")} onChange={e => setPassword(e.target.value)} required />
                         </div>
 
-                        <hr></hr>
+                        <hr/>
                         <div className="form-group">
                             <div className="SubmitButtonDiv">
                                 <button type="submit" className="btn btn-primary btn-lg">{t("loginform.signin")}</button>

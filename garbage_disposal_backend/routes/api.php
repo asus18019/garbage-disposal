@@ -28,8 +28,9 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::get('users', [\App\Http\Controllers\UserController::class, 'getUsers']);
     Route::put('users/user/update', [\App\Http\Controllers\UserController::class, 'userUpdateForAdmins']);
-
-    Route::get('userPerm', [\App\Http\Controllers\UserController::class, 'test2']);
+    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
+    Route::get('history', [\App\Http\Controllers\UserController::class, 'getHistory']);
+//    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
 
     Route::prefix('garbage')->group(function () {
         Route::post('/create', [App\Http\Controllers\garbageController::class, 'createGarbageType']);
@@ -44,7 +45,6 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'role:user|moderator|admin']], function () {
-    Route::get('adminPerm', [\App\Http\Controllers\UserController::class, 'test1']);
 
     Route::prefix('history')->group(function () {
         Route::post('/create', [\App\Http\Controllers\historyController::class, 'createRecord']);
@@ -72,4 +72,14 @@ Route::group(['middleware' => ['auth:sanctum', 'role:moderator|admin']], functio
 
     });
 });
+
+Route::prefix('export')->group(function () {
+    Route::get('/users', [\App\Http\Controllers\ImportExportController::class, 'exportUsersCollection']);
+});
+Route::prefix('import')->group(function () {
+    Route::post('/users', [\App\Http\Controllers\ImportExportController::class, 'importUsersCollection']);
+});
+
+
+
 

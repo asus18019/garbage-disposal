@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequests\DeleteRequest;
 use App\Http\Requests\UserRequests\UpdatePutRequest;
+use App\Models\historyModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -27,18 +29,13 @@ class UserController extends Controller
 
     public function getUsers(){
         return USER::join('house', 'users.houseID', '=', 'house.houseID')
-            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
-            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
-            ->select('users.id as userID', 'first_name', 'last_name', 'email', 'users.created_at', 'users.updated_at', 'houseTitle', 'location', 'name', 'users.houseID')
+            ->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
+//            ->leftJoin('user_history', 'users.id', 'user_history.userID')
+            ->select('users.id as userID', 'first_name', 'last_name', 'email', 'users.created_at', 'users.updated_at', 'houseTitle', 'location', 'name', 'users.houseID',
+//                'user_history.garbageID', 'weight', 'sum', 'user_history.created_at as historyCreated_at'
+            )
             ->get();
-    }
-
-    public function test1(){
-        return response(['message' => 'Это видит только admin и user']);
-    }
-
-    public function test2(){
-        return response(['message' => 'Это видит только admin']);
     }
 
     public function userUpdateForAdmins(UpdatePutRequest $request){
@@ -49,5 +46,15 @@ class UserController extends Controller
             $user->save();
         }
         return response(['messages' => 'success', 'updater user' => $user, $user->password], Response::HTTP_OK);
+    }
+
+    public function  getHistory(){
+        return historyModel::all();
+    }
+
+    public function userDelete(DeleteRequest $request) {
+        $user = User::find($request->userID);
+        $user->delete();
+        return response(['messages' => 'success'], Response::HTTP_OK);
     }
 }

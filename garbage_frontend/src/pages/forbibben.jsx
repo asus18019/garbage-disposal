@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Forbidden(){
+const Forbidden = () => {
 
     return(
         <div className="App">

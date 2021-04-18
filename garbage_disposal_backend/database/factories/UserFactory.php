@@ -31,7 +31,7 @@ class UserFactory extends Factory
 //            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'password' => Hash::make('12345678'), // password
 //            'remember_token' => Str::random(10),
-            'houseID' => $this->faker->numberBetween($min = 0, $max = 5),
+            'houseID' => $this->faker->numberBetween($min = 7, $max = 16),
         ];
     }
 

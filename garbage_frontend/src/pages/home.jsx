@@ -15,7 +15,7 @@ function Home(){
                 loading.role === 'moderator' ? <Moderator /> :
                 loading.role === 'admin' ? <Admin /> :
                 <div className="loaderDiv">
-                    <div className="loader"></div>
+                    <div className="loader"/>
                 </div>
             }
         </div>

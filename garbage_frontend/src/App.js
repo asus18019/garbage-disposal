@@ -6,7 +6,7 @@ import Login from './pages/login';
 import Home from './pages/home';
 import Register from './pages/register';
 import {useDispatch} from "react-redux";
-import {GetUserByCookie} from "./store/userAC";
+import {GetUserByCookie} from "./store/thunks";
 import Forbidden from "./pages/forbibben";
 
 function App() {

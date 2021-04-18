@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import UserTableRow from "./usersTableRow";
 import {FILTER_USERS_BY_ROLE, SELECT_USERS} from "../../store/usersDataReducer";
 
-function UsersTable(props){
+const UsersTable = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.selectedUsers);
 
@@ -88,6 +88,8 @@ function UsersTable(props){
                     <th data-type="text-long">Location <span className="resize-handle"></span></th>
                     <th data-type="text-long">Role<span className="resize-handle"></span></th>
                     <th data-type="text-long">edit<span className="resize-handle"></span></th>
+                    <th data-type="text-long">stats<span className="resize-handle"></span></th>
+                    <th data-type="text-long">delete<span className="resize-handle"></span></th>
                 </tr>
                 </thead>
                 <tbody>

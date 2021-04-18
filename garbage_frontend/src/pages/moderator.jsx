@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Moderator(){
+const Moderator = () => {
 
     return(
         <div className="App">

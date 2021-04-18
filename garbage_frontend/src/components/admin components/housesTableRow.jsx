@@ -1,6 +1,6 @@
 import React from 'react';
 
-function HouseTableRow(props){
+const HouseTableRow = (props) => {
 
     return(
         <tr className="userRow">

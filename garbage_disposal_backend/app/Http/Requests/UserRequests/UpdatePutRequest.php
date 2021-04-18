@@ -24,6 +24,7 @@ class UpdatePutRequest extends FormRequest
     public function rules()
     {
         return [
+            'userID' => ['exists:users,id'],
             'first_name' => ['string','min:3', 'max:255'],
             'last_name' => ['string','min:3', 'max:255'],
             'email' => ['string','min:6', 'max:600', 'unique:App\Models\User'],

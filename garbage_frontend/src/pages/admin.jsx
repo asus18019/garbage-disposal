@@ -2,9 +2,10 @@ import React, {useEffect} from 'react';
 import UsersTable from "../components/admin components/usersTable";
 import {useDispatch, useSelector} from "react-redux";
 import HouseTable from "../components/admin components/houseTable";
-import {GetHouses, GetUsers} from "../store/userAC";
+import {GetHistory, GetHouses, GetUsers} from "../store/thunks";
 import {SET_PAGE} from "../store/pageReducer";
-import EditUser from "../components/editUser";
+import UserEdit from "../components/userEdit";
+import UserStats from "../components/userStats";
 
 const Admin = () => {
 
@@ -15,6 +16,7 @@ const Admin = () => {
     useEffect(() => {
             dispatch(GetUsers());
             dispatch(GetHouses());
+            dispatch(GetHistory());
             }, []
     )
 
@@ -22,12 +24,14 @@ const Admin = () => {
         switch (page.page) {
             case 'Home':
                 return <div>Hello {user.user.first_name}</div>;
-            case 'Users' || 'Admins':
-                return <UsersTable page = {page} />;
+            case 'Users':
+                return <UsersTable />;
             case 'Houses':
                 return <HouseTable />;
             case 'UserEdit':
-                return <EditUser />;
+                return <UserEdit />;
+            case 'UserStats':
+                return <UserStats />
             default:
                 return ;
         }

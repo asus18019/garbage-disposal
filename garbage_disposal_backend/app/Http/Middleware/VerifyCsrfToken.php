@@ -18,5 +18,7 @@ class VerifyCsrfToken extends Middleware
         'http://127.0.0.1:8000/api/user/user',
         'http://127.0.0.1:8000/api/users/user/update',
         'http://127.0.0.1:8000/api/house/houses',
+        'http://127.0.0.1:8000/api/history',
+        'http://127.0.0.1:8000/api/users/user/delete',
     ];
 }

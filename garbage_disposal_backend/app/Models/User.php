@@ -35,4 +35,9 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function role()
+    {
+        return $this->hasOne(model_has_rolesModel::class, 'model_id');
+    }
+
 }

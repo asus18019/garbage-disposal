@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import HouseTableRow from "./housesTableRow";
 
-function HouseTable(){
+const HouseTable = () => {
     const houses = useSelector(state => state.houses.houses);
 
     const min = 150;
@@ -72,13 +72,13 @@ function HouseTable(){
             <table className="houseTable">
                 <thead>
                 <tr>
-                    <th data-type="numeric">House ID<span className="resize-handle"></span></th>
-                    <th data-type="text-short">HouseTitle<span className="resize-handle"></span></th>
-                    <th data-type="text-short">Location<span className="resize-handle"></span></th>
-                    <th data-type="text-short">Description<span className="resize-handle"></span></th>
-                    <th data-type="text-long">Created_at<span className="resize-handle"></span></th>
-                    <th data-type="text-short">Updated_at <span className="resize-handle"></span></th>
-                    <th data-type="text-short">EDIT <span className="resize-handle"></span></th>
+                    <th>House ID<span className="resize-handle"/></th>
+                    <th>HouseTitle<span className="resize-handle"/></th>
+                    <th>Location<span className="resize-handle"/></th>
+                    <th>Description<span className="resize-handle"/></th>
+                    <th>Created_at<span className="resize-handle"/></th>
+                    <th>Updated_at <span className="resize-handle"/></th>
+                    <th>EDIT <span className="resize-handle"/></th>
                 </tr>
                 </thead>
                 <tbody>
