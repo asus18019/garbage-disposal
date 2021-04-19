@@ -2,8 +2,10 @@ import React, {useState}from 'react';
 import Error from "../components/error";
 import  "./css files/register.css"
 import {Link, Redirect} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
-function Register(){
+const Register = () => {
+    const {t, i18n} = useTranslation();
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -49,33 +51,33 @@ function Register(){
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <form className="register-form regg" onSubmit={submit}>
-                        <h2 className="text-center">Register Now</h2>
+                        <h2 className="text-center">{t("registerform.title")}</h2>
                         <hr/>
                         {
                             error.map((errorText) => <Error errorText = {errorText} />)
                         }
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>First Name</label>
-                                <input type="text" className="form-control" placeholder="First Name" onChange={e => setFirstName(e.target.value)}/>
+                                <label>{t("registerform.firstName")}</label>
+                                <input type="text" className="form-control" placeholder={t("registerform.enter.firstName")} onChange={e => setFirstName(e.target.value)} required/>
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
                             <div className="form-group">
-                                <label>Last Name</label>
-                                <input type="text" className="form-control" placeholder="Last Name" onChange={e => setLastName(e.target.value)}/>
+                                <label>{t("registerform.lastName")}</label>
+                                <input type="text" className="form-control" placeholder={t("registerform.enter.lastName")} onChange={e => setLastName(e.target.value)} required/>
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
                         </div>
 
                         <div className="form-group">
-                            <label>Email Address</label>
-                            <input type="email" className="form-control" placeholder="Enter email" onChange={e => setEmail(e.target.value)}/>
+                            <label>{t("loginform.email")}</label>
+                            <input type="email" className="form-control" placeholder={t("loginform.enter.email")} onChange={e => setEmail(e.target.value)} required/>
                             <span className="hint alert-success">Enter you valid email id</span>
                         </div>
-s
+
                         <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" className="form-control" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+                            <label>{t("loginform.password")}</label>
+                            <input type="password" className="form-control" placeholder={t("loginform.enter.password")} onChange={e => setPassword(e.target.value)} required/>
                             <span className="hint alert-success">Password should be 8 or up chars </span>
                         </div>
 
@@ -83,10 +85,10 @@ s
 
                         <div className="form-group">
                             <div className="SubmitButtonDiv">
-                                <button type="submit" className="btn1 btn-primary btn-lg">Sign in</button>
+                                <button type="submit" className="btn1 btn-primary btn-lg">{t("registerform.signup")}</button>
                             </div>
                             <div className="textReg">
-                                <p className="text-center mb-0">Have an account? <Link to="/login" className="text text-success">Sign in</Link></p>
+                                <p className="text-center mb-0">{t("registerform.message")}<Link to="/login" className="text text-success">{t("registerform.link")}</Link></p>
                             </div>
                         </div>
 

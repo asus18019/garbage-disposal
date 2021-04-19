@@ -2,8 +2,10 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {DeleteUser} from "../../store/thunks";
 import {DELETE_USER} from "../../store/usersDataReducer";
+import {useTranslation} from "react-i18next";
 
 const UserTableRow = (props) => {
+    const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const setIndexPage = (page) => {
         dispatch({type: 'SET_PAGE', payload: page});
@@ -11,7 +13,7 @@ const UserTableRow = (props) => {
     }
 
     const deleteUser = (id) => {
-        let isConfirm = window.confirm("Вы действительно хотите удалить пользователя \n " + props.users.userID + " " + props.users.first_name + " " + props.users.last_name);
+        let isConfirm = window.confirm(t("admin.users.delete") + props.users.userID + " " + props.users.first_name + " " + props.users.last_name);
 
         if(isConfirm) {
             dispatch(DeleteUser(id));

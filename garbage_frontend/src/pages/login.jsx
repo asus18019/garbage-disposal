@@ -38,16 +38,9 @@ const Login = () => {
             dispatch({type: FETCH_USER_FAILURE, payload: content.message});
             setError(content.message.toString());
         } else {
-            // fetchUser();
             dispatch(GetUserByCookie());
             setRedirect(true);
         }
-
-        // if(content.message) {
-        //     setError(error.error=true, content.message);
-        //     console.log(error.text, content.message)
-        // }
-
     }
 
     if(redirect){

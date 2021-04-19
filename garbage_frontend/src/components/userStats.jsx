@@ -2,8 +2,10 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { garbageType } from "./constants";
 import {SET_PAGE} from "../store/pageReducer";
+import {useTranslation} from "react-i18next";
 
 const UserStats = () => {
+    const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.users);
     const index = useSelector(state => state.page.selectedIndex);
@@ -44,35 +46,35 @@ const UserStats = () => {
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <form className="register-form regg1">
-                        <h2 className="text-center">User stats</h2>
+                        <h2 className="text-center">{t("userStats.title")}</h2>
                         <hr/>
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>First Name</label>
+                                <label>{t("registerform.firstName")}</label>
                                 <input id="input_f_n" type="text" disabled="disabled" className="form-control" defaultValue={user.first_name}/>
                             </div>
                             <div className="form-group">
-                                <label>Last Name</label>
+                                <label>{t("registerform.lastName")}</label>
                                 <input id="input_l_n" type="text" disabled="disabled" className="form-control" defaultValue={user.last_name}/>
                             </div>
 
                             <div className="form-group">
-                                <label>Role</label>
+                                <label>{t("admin.users.table.role")}</label>
                                 <input id="input_houseID" type="text" disabled="disabled" className="form-control" defaultValue={user.name}/>
                             </div>
                         </div>
 
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>Email Address</label>
+                                <label>{t("loginform.email")}</label>
                                 <textarea id="input_l_n" disabled="disabled" className="form-control" defaultValue={user.email}/>
                             </div>
                             <div className="form-group">
-                                <label>Registered</label>
+                                <label>{t("admin.users.table.created_at")}</label>
                                 <input id="input_e" type="email" disabled="disabled" className="form-control" defaultValue={user.created_at.substring(2, 16).replace('T',' ')}/>
                             </div>
                             <div className="form-group">
-                                <label>Updated</label>
+                                <label>{t("admin.users.table.updated_at")}</label>
                                 <input id="input_e" type="email" disabled="disabled" className="form-control" defaultValue={user.updated_at.substring(2, 16).replace('T',' ')}/>
                             </div>
                         </div>
@@ -81,44 +83,44 @@ const UserStats = () => {
 
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>House</label>
+                                <label>{t("admin.users.table.house")}</label>
                                 <input id="input_f_n" type="text" disabled="disabled" className="form-control" defaultValue={user.houseTitle}/>
                             </div>
                             <div className="form-group">
-                                <label>Location</label>
+                                <label>{t("admin.users.table.location")}</label>
                                 <textarea id="input_l_n" disabled="disabled" className="form-control" defaultValue={user.location}/>
                             </div>
 
                             <div className="form-group">
-                                <label>House ID</label>
+                                <label>{t("admin.users.edit.houseID")}</label>
                                 <input id="input_houseID" type="text" disabled="disabled" className="form-control" defaultValue={user.houseID}/>
                             </div>
                         </div>
 
                         <hr/>
 
-                        <h5>Выброшено за все время</h5>
+                        <h5>{t("userStats.thrown")}</h5>
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>Glass</label>
+                                <label>{t("userStats.glass")}</label>
                                 <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={glass + " kg"}/>
                             </div>
                             <div className="form-group">
-                                <label>Paper</label>
+                                <label>{t("userStats.paper")}</label>
                                 <input id="input_l_n" type="text" disabled="disabled" className="form-control" value={paper + " kg"}/>
                             </div>
                             <div className="form-group">
-                                <label>Organic</label>
+                                <label>{t("userStats.organic")}</label>
                                 <input id="input_houseID" type="text" disabled="disabled" className="form-control" value={organic + " kg"}/>
                             </div>
                             <div className="form-group">
-                                <label>Unsorted</label>
+                                <label>{t("userStats.unsorted")}</label>
                                 <input id="input_houseID" type="text" disabled="disabled" className="form-control"  value={unsorted + " kg"}/>
                             </div>
                         </div>
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>Total</label>
+                                <label>{t("userStats.total")}</label>
                                 <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={totalWeight + " kg"}/>
                             </div>
                         </div>
@@ -127,7 +129,7 @@ const UserStats = () => {
 
                         <div className="form-group">
                             <div className="textReg">
-                                <p onClick={() => dispatch({type:SET_PAGE, payload: 'Users'})} className="text-center mb-0 btu">Back to users</p>
+                                <p onClick={() => dispatch({type:SET_PAGE, payload: 'Users'})} className="text-center mb-0 btu">{t("admin.backtousersButton")}</p>
                             </div>
                         </div>
 

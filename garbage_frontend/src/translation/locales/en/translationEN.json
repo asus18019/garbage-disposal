@@ -2,6 +2,8 @@
   "navbar.logo": "Garbage disposal",
   "navbar.login": "Login",
   "navbar.register": "Registration",
+  "navbar.dashboard": "Dashboard",
+  "navbar.logout": "Logout",
 
   "loginform.title": "Login Now",
   "loginform.email": "Email Address",
@@ -10,5 +12,60 @@
   "loginform.enter.email": "Enter email address",
   "loginform.enter.password": "Enter password",
   "loginform.message": "If you dont have account",
-  "loginform.link": "Sign up"
+  "loginform.link": "Sign up",
+
+  "registerform.title": "Register Now",
+  "registerform.firstName": "First Name",
+  "registerform.lastName": "Last Name",
+  "registerform.enter.firstName": "Enter First Name",
+  "registerform.enter.lastName": "Enter Last Name",
+  "registerform.signup": "Sign up",
+  "registerform.message": "Have an account? ",
+  "registerform.link": "Sign In",
+
+  "admin.menu.home": "Home",
+  "admin.menu.users": "Users",
+  "admin.menu.houses": "houses",
+  "admin.users.filer.all": "All",
+  "admin.users.filer.users": "Users",
+  "admin.users.filer.moderators": "Moderators",
+  "admin.users.filer.admins": "Admins",
+
+  "admin.users.table.id": "ID",
+  "admin.users.table.firstName": "First Name",
+  "admin.users.table.lastName": "Last Name",
+  "admin.users.table.email": "Email",
+  "admin.users.table.created_at": "Created at",
+  "admin.users.table.updated_at": "Updated at",
+  "admin.users.table.house": "House",
+  "admin.users.table.location": "Location",
+  "admin.users.table.role": "Role",
+  "admin.users.table.edit": "Edit",
+  "admin.users.table.stats": "Stats",
+  "admin.users.table.delete": "Delete",
+
+  "admin.backtousersButton": "Back to users",
+
+  "admin.users.edit.title": "User editing",
+  "admin.users.edit.houseID": "house ID",
+  "admin.users.edit.submit": "Submit changes",
+
+  "admin.users.delete": "Are you sure you want to delete user \n",
+
+  "userStats.title": "User Stats",
+  "userStats.thrown": "garbage thrown away",
+  "userStats.glass": "Glass",
+  "userStats.paper": "Paper",
+  "userStats.organic": "Organic",
+  "userStats.unsorted": "Unsorted",
+  "userStats.total": "Total",
+
+  "admin.houses.table.id": "ID",
+  "admin.houses.table.title": "Title",
+  "admin.houses.table.location": "Location",
+  "admin.houses.table.description": "Description",
+  "admin.houses.table.created_at": "Created at",
+  "admin.houses.table.updated_at": "Updated at",
+  "admin.houses.table.edit": "Edit"
+
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import HouseTableRow from "./housesTableRow";
+import {useTranslation} from "react-i18next";
 
 const HouseTable = () => {
+    const {t, i18n} = useTranslation();
     const houses = useSelector(state => state.houses.houses);
 
     const min = 150;
@@ -72,13 +74,13 @@ const HouseTable = () => {
             <table className="houseTable">
                 <thead>
                 <tr>
-                    <th>House ID<span className="resize-handle"/></th>
-                    <th>HouseTitle<span className="resize-handle"/></th>
-                    <th>Location<span className="resize-handle"/></th>
-                    <th>Description<span className="resize-handle"/></th>
-                    <th>Created_at<span className="resize-handle"/></th>
-                    <th>Updated_at <span className="resize-handle"/></th>
-                    <th>EDIT <span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.id")}<span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.title")}<span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.location")}<span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.description")}<span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.created_at")}<span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.updated_at")} <span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.edit")}<span className="resize-handle"/></th>
                 </tr>
                 </thead>
                 <tbody>

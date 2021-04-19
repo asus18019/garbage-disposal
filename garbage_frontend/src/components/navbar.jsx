@@ -45,10 +45,10 @@ function Navbar(){
                             ?
                                 <div className="d-flex justify-content-end bd-highlight">
                                     <ul className="navbar-nav mr-auto">
-                                        <Link to="/home" className="nav-link">Dashboard</Link>
+                                        <Link to="/home" className="nav-link">{t("navbar.dashboard")}</Link>
                                     </ul>
                                     <ul className="navbar-nav mr-auto">
-                                        <Link to="/login" onClick={Logout} className="nav-link">Logout</Link>
+                                        <Link to="/login" onClick={Logout} className="nav-link">{t("navbar.logout")}</Link>
                                     </ul>
                                     {languageSelector}
                                 </div>

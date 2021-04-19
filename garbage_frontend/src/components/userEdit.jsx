@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {SET_PAGE} from "../store/pageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import Error from "./error";
+import {useTranslation} from "react-i18next";
 
 const UserEdit = () => {
+    const {t, i18n} = useTranslation();
     const [errors, setErrors] = useState([]);
 
     const deleteUser = async () => {
@@ -45,29 +47,29 @@ const UserEdit = () => {
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <form className="register-form regg">
-                        <h2 className="text-center">User editing</h2>
+                        <h2 className="text-center">{t("admin.users.edit.title")}</h2>
                         <hr/>
                         {
                             errors.map((errorText) => <Error errorText = {errorText} />)
                         }
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>First Name</label>
-                                <input id="input_f_n" type="text" className="form-control" placeholder="First Name" defaultValue={
+                                <label>{t("registerform.firstName")}</label>
+                                <input id="input_f_n" type="text" className="form-control" placeholder={t("registerform.firstName")} defaultValue={
                                     (users.filter(word => word.userID === index))[0].first_name
                                 }/>
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
                             <div className="form-group">
-                                <label>Last Name</label>
-                                <input id="input_l_n" type="text" className="form-control" placeholder="Last Name" defaultValue={
+                                <label>{t("registerform.lastName")}</label>
+                                <input id="input_l_n" type="text" className="form-control" placeholder={t("registerform.lastName")} defaultValue={
                                     (users.filter(word => word.userID === index))[0].last_name
                                 }/>
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
 
                             <div className="form-group">
-                                <label>House ID</label>
+                                <label>{t("admin.users.edit.houseID")}</label>
                                 <input id="input_houseID" type="text" className="form-control" placeholder="Last Name" defaultValue={
                                     (users.filter(word => word.userID === index))[0].houseID
                                 }/>
@@ -76,7 +78,7 @@ const UserEdit = () => {
                         </div>
 
                         <div className="form-group">
-                            <label>Email Address</label>
+                            <label>{t("loginform.email")}</label>
                             <input id="input_e" type="email" className="form-control" placeholder="Enter email" defaultValue={
                                 (users.filter(word => word.userID === index))[0].email
                             }/>
@@ -84,8 +86,8 @@ const UserEdit = () => {
                         </div>
 
                         <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" className="form-control" placeholder="Password"/>
+                            <label>{t("loginform.password")}</label>
+                            <input type="password" className="form-control" placeholder={t("loginform.enter.email")}/>
                             <span className="hint alert-success">Password should be 8 or up chars </span>
                         </div>
 
@@ -93,10 +95,10 @@ const UserEdit = () => {
 
                         <div className="form-group">
                             <div className="SubmitButtonDiv">
-                                <button onClick={deleteUser} type="submit" className="btn1 btn-primary btn-lg">Submit changes</button>
+                                <button onClick={deleteUser} type="submit" className="btn1 btn-primary btn-lg">{t("admin.users.edit.submit")}</button>
                             </div>
                             <div className="textReg">
-                                <p onClick={() => dispatch({type:SET_PAGE, payload: 'Users'})} className="text-center mb-0 btu">Back to users</p>
+                                <p onClick={() => dispatch({type:SET_PAGE, payload: 'Users'})} className="text-center mb-0 btu">{t("admin.backtousersButton")}</p>
                             </div>
                         </div>
 

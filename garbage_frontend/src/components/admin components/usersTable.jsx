@@ -2,8 +2,10 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import UserTableRow from "./usersTableRow";
 import {FILTER_USERS_BY_ROLE, SELECT_USERS} from "../../store/usersDataReducer";
+import {useTranslation} from "react-i18next";
 
 const UsersTable = () => {
+    const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.selectedUsers);
 
@@ -71,25 +73,25 @@ const UsersTable = () => {
 
     return(
         <div className="App">
-            <button onClick={() => dispatch({type: SELECT_USERS})}>ALL</button>
-            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'user'})}>Users</button>
-            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'moderator'})}>Moderators</button>
-            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'admin'})}>Admins</button>
+            <button onClick={() => dispatch({type: SELECT_USERS})}>{t("admin.users.filer.all")}</button>
+            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'user'})}>{t("admin.users.filer.users")}</button>
+            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'moderator'})}>{t("admin.users.filer.moderators")}</button>
+            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'admin'})}>{t("admin.users.filer.admins")}</button>
             <table>
                 <thead>
                 <tr>
-                    <th data-type="numeric">ID <span className="resize-handle"></span></th>
-                    <th data-type="text-short">First name <span className="resize-handle"></span></th>
-                    <th data-type="text-short">Last name <span className="resize-handle"></span></th>
-                    <th data-type="text-short">Email <span className="resize-handle"></span></th>
-                    <th data-type="text-long">Created_at <span className="resize-handle"></span></th>
-                    <th data-type="text-short">Updated_at <span className="resize-handle"></span></th>
-                    <th data-type="text-long">House <span className="resize-handle"></span></th>
-                    <th data-type="text-long">Location <span className="resize-handle"></span></th>
-                    <th data-type="text-long">Role<span className="resize-handle"></span></th>
-                    <th data-type="text-long">edit<span className="resize-handle"></span></th>
-                    <th data-type="text-long">stats<span className="resize-handle"></span></th>
-                    <th data-type="text-long">delete<span className="resize-handle"></span></th>
+                    <th>{t("admin.users.table.id")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.firstName")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.lastName")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.email")}<span className="resize-handle">/</span></th>
+                    <th>{t("admin.users.table.created_at")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.updated_at")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.house")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.location")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.role")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.edit")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.stats")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.delete")}<span className="resize-handle"/></th>
                 </tr>
                 </thead>
                 <tbody>

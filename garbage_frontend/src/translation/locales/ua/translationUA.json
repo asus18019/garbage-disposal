@@ -2,6 +2,8 @@
   "navbar.logo": "Утилізація сміття",
   "navbar.login": "Вхід",
   "navbar.register": "Реєстрація",
+  "navbar.dashboard": "Кабінет",
+  "navbar.logout": "Вихід",
 
   "loginform.title": "Увійти зараз",
   "loginform.email": "Емейл",
@@ -10,5 +12,59 @@
   "loginform.enter.email": "Уведи емейл",
   "loginform.enter.password": "Уведи пароль",
   "loginform.message": "Якщо у вас немає аккаунта",
-  "loginform.link": "Зареєструйся"
+  "loginform.link": "Зареєструйся",
+
+  "registerform.title": "Зареєструйся зараз",
+  "registerform.firstName": "Ім'я",
+  "registerform.lastName": "Прізвище",
+  "registerform.enter.firstName": "Уведи ім'я",
+  "registerform.enter.lastName": "Уведи прізвище",
+  "registerform.signup": "Зареєструватися",
+  "registerform.message": "Вже маєте акаунт? ",
+  "registerform.link": "Авторизуйся",
+
+  "admin.menu.home": "Головна",
+  "admin.menu.users": "Користувачі",
+  "admin.menu.houses": "Будинки",
+  "admin.users.filer.all": "Всі",
+  "admin.users.filer.users": "Користувачі",
+  "admin.users.filer.moderators": "Модератори",
+  "admin.users.filer.admins": "Адміністратори",
+
+  "admin.users.table.id": "ID",
+  "admin.users.table.firstName": "Ім'я",
+  "admin.users.table.lastName": "Прізвище",
+  "admin.users.table.email": "Емайл",
+  "admin.users.table.created_at": "Зареєстрований",
+  "admin.users.table.updated_at": "Оновлений",
+  "admin.users.table.house": "Будинок",
+  "admin.users.table.location": "Місцезнаходження",
+  "admin.users.table.role": "Роль",
+  "admin.users.table.edit": "Редагувати",
+  "admin.users.table.stats": "Переглянути",
+  "admin.users.table.delete": "Видалити",
+
+  "admin.backtousersButton": "Назад до користувачів",
+
+  "admin.users.edit.title": "Редагувати користувача",
+  "admin.users.edit.houseID": "ID будинку",
+  "admin.users.edit.submit": "Зберегти зміни",
+
+  "admin.users.delete": "Ви впевнені, що хочете видалити користувача \n",
+
+  "userStats.title": "Статистика користувача",
+  "userStats.thrown": "Викинуто сміття",
+  "userStats.glass": "Скло",
+  "userStats.paper": "Папір",
+  "userStats.organic": "Органічне сміття",
+  "userStats.unsorted": "Не сортоване",
+  "userStats.total": "Всього",
+
+  "admin.houses.table.id": "ID",
+  "admin.houses.table.title": "Назва",
+  "admin.houses.table.location": "Місцезнаходження",
+  "admin.houses.table.description": "Опис",
+  "admin.houses.table.created_at": "Створений",
+  "admin.houses.table.updated_at": "Оновлений",
+  "admin.houses.table.edit": "Редагувати"
 }
