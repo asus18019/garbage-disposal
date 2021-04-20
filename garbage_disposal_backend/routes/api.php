@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
 
     Route::prefix('house')->group(function () {
         Route::get('/houses', [\App\Http\Controllers\houseController::class, 'getHouses']);
-        Route::put('/update/{id}', [\App\Http\Controllers\houseController::class, 'updateHouse']);
+        Route::put('/update', [\App\Http\Controllers\houseController::class, 'updateHouse']);
         Route::post('/create', [\App\Http\Controllers\houseController::class, 'createHouse']);
     });
 });

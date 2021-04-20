@@ -1,6 +1,12 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
 
 const HouseTableRow = (props) => {
+    const dispatch = useDispatch();
+    const setIndexPage = (page) => {
+        dispatch({type: 'SET_PAGE', payload: page});
+        dispatch({type: 'SET_INDEX', payload: props.house.houseID});
+    }
 
     return(
         <tr className="userRow">
@@ -10,7 +16,7 @@ const HouseTableRow = (props) => {
             <td>{props.house.description}</td>
             <td>{props.house.created_at.substring(1, 16).replace('T',' ')}</td>
             <td>{props.house.updated_at.substring(1, 16).replace('T',' ')}</td>
-            <td className="editIcon" onClick={() => console.log(props.house.houseID)}>
+            <td className="editIcon" onClick={() => setIndexPage('HouseEdit')}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pen"
                      viewBox="0 0 16 16">
                     <path

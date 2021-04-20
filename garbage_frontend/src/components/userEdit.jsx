@@ -14,7 +14,7 @@ const UserEdit = () => {
         const last_name = document.getElementById("input_l_n").value;
         const email = document.getElementById("input_e").value;
         const houseID = document.getElementById("input_houseID").value;
-        const userID = (users.filter(word => word.userID === index))[0].userID;
+        const userID = user.userID;
 
             const response = await fetch('http://127.0.0.1:8000/api/users/user/update', {
                 method: 'PUT',
@@ -36,17 +36,16 @@ const UserEdit = () => {
                     setErrors(error => [...error, content.errors[key].toString()]);
                 }
             }
-
     }
     const dispatch = useDispatch();
-    const users = useSelector(state => state.users.users);
     const index = useSelector(state => state.page.selectedIndex);
+    const user = useSelector(state => state.users.users.filter(word => word.userID === index)[0]);
 
     return(
         <div className="App">{}
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
-                    <form className="register-form regg">
+                    <div className="register-form regg">
                         <h2 className="text-center">{t("admin.users.edit.title")}</h2>
                         <hr/>
                         {
@@ -55,33 +54,25 @@ const UserEdit = () => {
                         <div className="containerFLname">
                             <div className="form-group">
                                 <label>{t("registerform.firstName")}</label>
-                                <input id="input_f_n" type="text" className="form-control" placeholder={t("registerform.firstName")} defaultValue={
-                                    (users.filter(word => word.userID === index))[0].first_name
-                                }/>
+                                <input id="input_f_n" type="text" className="form-control" placeholder={t("registerform.firstName")} defaultValue={user.first_name} />
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
                             <div className="form-group">
                                 <label>{t("registerform.lastName")}</label>
-                                <input id="input_l_n" type="text" className="form-control" placeholder={t("registerform.lastName")} defaultValue={
-                                    (users.filter(word => word.userID === index))[0].last_name
-                                }/>
+                                <input id="input_l_n" type="text" className="form-control" placeholder={t("registerform.lastName")} defaultValue={user.last_name} />
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
 
                             <div className="form-group">
                                 <label>{t("admin.users.edit.houseID")}</label>
-                                <input id="input_houseID" type="text" className="form-control" placeholder="Last Name" defaultValue={
-                                    (users.filter(word => word.userID === index))[0].houseID
-                                }/>
+                                <input id="input_houseID" type="text" className="form-control" placeholder="Last Name" defaultValue={user.houseID} />
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label>{t("loginform.email")}</label>
-                            <input id="input_e" type="email" className="form-control" placeholder="Enter email" defaultValue={
-                                (users.filter(word => word.userID === index))[0].email
-                            }/>
+                            <input id="input_e" type="email" className="form-control" placeholder="Enter email" defaultValue={user.email} />
                             <span className="hint alert-success">Enter you valid email id</span>
                         </div>
 
@@ -102,7 +93,7 @@ const UserEdit = () => {
                             </div>
                         </div>
 
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

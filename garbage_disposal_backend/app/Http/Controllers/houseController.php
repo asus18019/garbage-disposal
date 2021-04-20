@@ -17,8 +17,8 @@ class houseController extends Controller
         return response(['all_houses' => $houses], Response::HTTP_OK);
     }
 
-    public function updateHouse(UpdatePutRequest $request, $id){
-        $house = houseModel::find($id);
+    public function updateHouse(UpdatePutRequest $request){
+        $house = houseModel::find($request->houseID);
         if(!$house){
             return response(['error' => 'house doesnt exist'], Response::HTTP_EXPECTATION_FAILED);// todo change the response code
         }

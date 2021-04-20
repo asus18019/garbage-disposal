@@ -7,6 +7,8 @@ import {SET_PAGE} from "../store/pageReducer";
 import UserEdit from "../components/userEdit";
 import UserStats from "../components/userStats";
 import {useTranslation} from "react-i18next";
+import {Link} from 'react-router-dom';
+import HouseEdit from "../components/houseEdit";
 
 const Admin = () => {
     const {t, i18n} = useTranslation();
@@ -32,7 +34,9 @@ const Admin = () => {
             case 'UserEdit':
                 return <UserEdit />;
             case 'UserStats':
-                return <UserStats />
+                return <UserStats />;
+            case 'HouseEdit':
+                return <HouseEdit />;
             default:
                 return ;
         }
@@ -45,10 +49,10 @@ const Admin = () => {
             <div className="container11">
                 <div className="div11">
                     <div id="menu" className="sidemenu">
-                        <a href='#' onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</a>
-                        <a href='#' onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</a>
-                        <a href='#' onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</a>
-                        <a href='#' onClick={() => console.log('LOGIN')}>Login</a>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
+                        <Link onClick={() => console.log('LOGIN')}>Login</Link>
                     </div>
                 </div>
                 <div className="content">

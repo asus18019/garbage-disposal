@@ -1,7 +1,7 @@
 const initialState = {
     loading: false,
     houses: [],
-    errors: {},
+    errors: [],
 }
 
 export const FETCH_HOUSES = "FETCH_HOUSES";
@@ -15,7 +15,7 @@ export const housesReducer = (state = initialState, action) => {
         case ADD_HOUSES:
             return {...state, houses: action.payload, loading: false}
         case FETCH_HOUSES_FAILURE:
-            return {...state, houses: {}, loading: false, errors: action.payload}
+            return {...state, errors: [...state.errors, action.payload]}
         default:
             return state
     }

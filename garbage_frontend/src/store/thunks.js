@@ -65,8 +65,4 @@ export const DeleteUser = (userID) => async (dispatch) => {
             userID,
         }),
     });
-    // const content = await response.json();
-    // if(response.status === 200){
-    //     console.log(content)
-    // }
 }

@@ -24,6 +24,7 @@ class UpdatePutRequest extends FormRequest
     public function rules()
     {
         return [
+            'houseID' => ['required', 'exists:house,houseID'],
             'location' => ['string','min:8', 'max:255'],
             'description' => ['string','min:8', 'max:255'],
             'houseTitle' => ['string','min:3', 'max:255'],
