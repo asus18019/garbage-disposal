@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {DeleteUser} from "../../store/thunks";
-import {DELETE_USER} from "../../store/usersDataReducer";
+import {DeleteUser} from "../../../store/thunks";
+import {DELETE_USER} from "../../../store/usersDataReducer";
 import {useTranslation} from "react-i18next";
 
 const UserTableRow = (props) => {

@@ -14,19 +14,22 @@ const UserEdit = () => {
         const last_name = document.getElementById("input_l_n").value;
         const email = document.getElementById("input_e").value;
         const houseID = document.getElementById("input_houseID").value;
+        const password = document.getElementById("input_pass").value;
         const userID = user.userID;
+
+        const body = {userID, first_name, last_name, email, houseID, password};
+
+        Object.keys(body).forEach(key => {
+            if (body[key] === '' || key[key] === null) {
+                delete body[key];
+            }
+        });
 
             const response = await fetch('http://127.0.0.1:8000/api/users/user/update', {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
                 credentials: 'include',
-                body: JSON.stringify({
-                    userID,
-                    first_name,
-                    last_name,
-                    houseID,
-                    email,
-                }),
+                body: JSON.stringify(body),
             });
             const content = await response.json();
             if(response.status === 200){
@@ -72,13 +75,13 @@ const UserEdit = () => {
 
                         <div className="form-group">
                             <label>{t("loginform.email")}</label>
-                            <input id="input_e" type="email" className="form-control" placeholder="Enter email" defaultValue={user.email} />
+                            <input id="input_e" type="email" className="form-control" placeholder="Enter email" />
                             <span className="hint alert-success">Enter you valid email id</span>
                         </div>
 
                         <div className="form-group">
                             <label>{t("loginform.password")}</label>
-                            <input type="password" className="form-control" placeholder={t("loginform.enter.email")}/>
+                            <input id="input_pass" type="password" className="form-control" placeholder={t("loginform.enter.email")}/>
                             <span className="hint alert-success">Password should be 8 or up chars </span>
                         </div>
 

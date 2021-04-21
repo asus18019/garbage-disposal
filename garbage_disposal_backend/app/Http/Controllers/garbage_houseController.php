@@ -92,4 +92,9 @@ class garbage_houseController extends Controller
             ->get();
         return response(['containers in my house' => $containers], Response::HTTP_OK);
     }
+
+    public function getContainersForAdmin(){
+        $containers = garbage_houseModel::leftJoin('price', 'garbage_house.priceID', '=', 'price.priceID')->get();
+        return response(['containers' => $containers], Response::HTTP_OK);
+    }
 }

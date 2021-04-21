@@ -233,6 +233,7 @@ tr:nth-child(even) td {
     minmax(100px, 1.1fr)
     minmax(100px, 1.1fr)
     minmax(30px, 0.7fr)
+    minmax(30px, 0.7fr)
 }
 
 .userStats {
@@ -299,4 +300,52 @@ tr:nth-child(even) td {
 
 .regg1 h2 {
     color: #05c18a;
+}
+
+.form-group{
+    width: 100%;
+}
+
+.UsersInHouseTable {
+    margin: 15px;
+    width: 100%;
+    flex: 1;
+    display: grid;
+    border-collapse: collapse;
+    /* These are just initial values which are overriden using JavaScript when a column is resized */
+    grid-template-columns:
+    minmax(30px, 1fr)
+    minmax(70px, 1.67fr)
+    minmax(70px, 1.67fr)
+}
+
+.UsersInHouseRow:hover {
+    cursor: pointer;
+}
+
+.userRow1 {
+    background: #5fb68b;
+}
+
+.welcome_admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ContainerInHouse{
+    margin: 15px;
+    width: 100%;
+    flex: 1;
+    display: grid;
+    border-collapse: collapse;
+    /* These are just initial values which are overriden using JavaScript when a column is resized */
+    grid-template-columns:
+    minmax(30px, 1fr)
+    minmax(70px, 1.67fr)
+    minmax(70px, 1.67fr)
+    minmax(70px, 1.67fr)
+    minmax(70px, 1.67fr)
+    minmax(70px, 1.67fr)
 }

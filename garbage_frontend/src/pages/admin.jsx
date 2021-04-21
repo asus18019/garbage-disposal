@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
-import UsersTable from "../components/admin components/usersTable";
+import UsersTable from "../components/admin_components/users_table/usersTable";
 import {useDispatch, useSelector} from "react-redux";
-import HouseTable from "../components/admin components/houseTable";
-import {GetHistory, GetHouses, GetUsers} from "../store/thunks";
+import HouseTable from "../components/admin_components/houses_table/houseTable";
+import {GetHistory, GetHouses, GetUsers, GetContainers} from "../store/thunks";
 import {SET_PAGE} from "../store/pageReducer";
 import UserEdit from "../components/userEdit";
 import UserStats from "../components/userStats";
 import {useTranslation} from "react-i18next";
 import {Link} from 'react-router-dom';
 import HouseEdit from "../components/houseEdit";
+import HouseStats from "../components/admin_components/houseStats/houseStats";
 
 const Admin = () => {
     const {t, i18n} = useTranslation();
@@ -20,13 +21,17 @@ const Admin = () => {
             dispatch(GetUsers());
             dispatch(GetHouses());
             dispatch(GetHistory());
+            dispatch(GetContainers());
             }, []
     )
 
     const setContent = () => {
         switch (page.page) {
             case 'Home':
-                return <div>Hello {user.user.first_name}</div>;
+                return <div className="welcome_admin">
+                    <div className="alert alert-info" role="alert">
+                        Hello {user.user.first_name}
+                    </div></div>;
             case 'Users':
                 return <UsersTable />;
             case 'Houses':
@@ -37,6 +42,8 @@ const Admin = () => {
                 return <UserStats />;
             case 'HouseEdit':
                 return <HouseEdit />;
+            case 'HouseStats':
+                return <HouseStats />
             default:
                 return ;
         }

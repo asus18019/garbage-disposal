@@ -1,6 +1,7 @@
 import {FETCH_USER, FETCH_USER_FAILURE, LOGIN_USER} from "./userReducer";
 import {ADD_USERS, ADD_HISTORY} from "./usersDataReducer";
 import {ADD_HOUSES} from "./housesReducer";
+import {ADD_CONTAINERS} from "./containersReducer";
 
 export const GetUserByCookie = () => async (dispatch) => {
     dispatch({type: FETCH_USER})
@@ -65,4 +66,16 @@ export const DeleteUser = (userID) => async (dispatch) => {
             userID,
         }),
     });
+}
+
+export const GetContainers = () => async (dispatch) => {
+    const response = await fetch('http://127.0.0.1:8000/api/house/containers', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+        credentials: 'include',
+    });
+    const content = await response.json();
+    if(response.status === 200){
+        dispatch({type:ADD_CONTAINERS, payload: content.containers});
+    }
 }

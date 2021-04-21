@@ -40,4 +40,9 @@ class houseModel extends Model
         'location',
         'description',
     ];
+
+    public function containers()
+    {
+        return $this->hasMany(garbage_houseModel::class, 'houseID');
+    }
 }

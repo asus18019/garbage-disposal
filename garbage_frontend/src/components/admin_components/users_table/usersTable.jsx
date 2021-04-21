@@ -1,11 +1,13 @@
 import React from 'react';
-import {useSelector} from "react-redux";
-import HouseTableRow from "./housesTableRow";
+import {useDispatch, useSelector} from "react-redux";
+import UserTableRow from "./usersTableRow";
+import {FILTER_USERS_BY_ROLE, SELECT_USERS} from "../../../store/usersDataReducer";
 import {useTranslation} from "react-i18next";
 
-const HouseTable = () => {
+const UsersTable = () => {
     const {t, i18n} = useTranslation();
-    const houses = useSelector(state => state.houses.houses);
+    const dispatch = useDispatch();
+    const users = useSelector(state => state.users.selectedUsers);
 
     const min = 150;
     const columnTypeToRatioMap = {
@@ -71,21 +73,30 @@ const HouseTable = () => {
 
     return(
         <div className="App">
-            <table className="houseTable">
+            <button onClick={() => dispatch({type: SELECT_USERS})}>{t("admin.users.filer.all")}</button>
+            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'user'})}>{t("admin.users.filer.users")}</button>
+            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'moderator'})}>{t("admin.users.filer.moderators")}</button>
+            <button onClick={() => dispatch({type:FILTER_USERS_BY_ROLE, payload: 'admin'})}>{t("admin.users.filer.admins")}</button>
+            <table>
                 <thead>
                 <tr>
-                    <th>{t("admin.houses.table.id")}<span className="resize-handle"/></th>
-                    <th>{t("admin.houses.table.title")}<span className="resize-handle"/></th>
-                    <th>{t("admin.houses.table.location")}<span className="resize-handle"/></th>
-                    <th>{t("admin.houses.table.description")}<span className="resize-handle"/></th>
-                    <th>{t("admin.houses.table.created_at")}<span className="resize-handle"/></th>
-                    <th>{t("admin.houses.table.updated_at")} <span className="resize-handle"/></th>
-                    <th>{t("admin.houses.table.edit")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.id")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.firstName")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.lastName")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.email")}<span className="resize-handle">/</span></th>
+                    <th>{t("admin.users.table.created_at")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.updated_at")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.house")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.location")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.role")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.edit")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.stats")}<span className="resize-handle"/></th>
+                    <th>{t("admin.users.table.delete")}<span className="resize-handle"/></th>
                 </tr>
                 </thead>
                 <tbody>
                 {
-                    houses.map((house) => <HouseTableRow house = {house} />)
+                    users.map((users) => <UserTableRow users = {users} />)
                 }
                 </tbody>
             </table>
@@ -93,4 +104,4 @@ const HouseTable = () => {
     )
 }
 
-export default HouseTable;
+export default UsersTable;

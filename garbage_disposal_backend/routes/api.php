@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::put('users/user/update', [\App\Http\Controllers\UserController::class, 'userUpdateForAdmins']);
     Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
     Route::get('history', [\App\Http\Controllers\UserController::class, 'getHistory']);
+    Route::get('/house/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainersForAdmin']);
 //    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
 
     Route::prefix('garbage')->group(function () {
