@@ -59,7 +59,7 @@ const Admin = () => {
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
-                        <Link onClick={() => console.log('LOGIN')}>Login</Link>
+                        <Link onClick={() => console.log('LOGIN')}>Import/Export</Link>
                     </div>
                 </div>
                 <div className="content">

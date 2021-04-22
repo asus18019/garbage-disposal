@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import Error from "./error";
 import {SET_PAGE} from "../store/pageReducer";
 import {useDispatch, useSelector} from "react-redux";
+import ContainerEditRow from "./containerEditRow";
 
 const HouseEdit = () => {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const index = useSelector(state => state.page.selectedIndex);
     const house = useSelector(state => state.houses.houses.filter(house => house.houseID === index)[0]);
+    const containers = useSelector(state => state.containers.containers.filter(container => container.houseID === index));
 
     const UpdateHouseWithParams = async () => {
         let houseID = document.getElementById("house_id").value;
@@ -49,7 +51,7 @@ const HouseEdit = () => {
                         {
                             errors.map((errorText) => <Error errorText = {errorText} />)
                         }
-                        <div className="containerFLname houseEdit">
+                        <div className="containerFLname">
                             <div className="form-group">
                                 <label>House ID</label>
                                 <input disabled="disabled" id="house_id" type="text" className="form-control" defaultValue={house.houseID} />
@@ -58,7 +60,6 @@ const HouseEdit = () => {
                                 <label>Title</label>
                                 <input id="house_title" type="text" className="form-control" defaultValue={house.houseTitle} />
                             </div>
-
                         </div>
 
                         <div className="form-group">
@@ -72,6 +73,9 @@ const HouseEdit = () => {
                         </div>
 
                         <hr/>
+                        {
+                            containers.map((container) => <ContainerEditRow container={container} />)
+                        }
 
                         <div className="form-group">
                             <div className="SubmitButtonDiv">

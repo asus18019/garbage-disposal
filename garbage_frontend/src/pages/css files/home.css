@@ -349,3 +349,11 @@ tr:nth-child(even) td {
     minmax(70px, 1.67fr)
     minmax(70px, 1.67fr)
 }
+
+.btnChangeContainer{
+    width: 100%;
+}
+
+.ContainerToContainer {
+    background: rgba(108, 122, 224, 0.12);
+}

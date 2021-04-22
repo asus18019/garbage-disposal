@@ -1,13 +1,10 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {SET_PAGE} from "../../../store/pageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import HouseStatsRow from "./houseStatsRow";
 import ContainerRow from "./containerRow";
 
 const HouseStats = () => {
-    useEffect(() => {
-        console.log(containers)
-    })
     const index = useSelector(state => state.page.selectedIndex);
     const house = useSelector(state => state.houses.houses.filter(house => house.houseID === index)[0]);
     const users = useSelector(state => state.users.users.filter(user => user.houseID === index));

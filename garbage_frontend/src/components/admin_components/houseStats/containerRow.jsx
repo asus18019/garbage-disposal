@@ -1,19 +1,7 @@
 import React from "react";
-import { garbageType } from "../../constants";
+import { setGarbageTitle } from "../../constants";
 
 const ContainerRow = (props) => {
-    const setGarbageTitle = (garbageID) => {
-        switch (garbageID) {
-            case garbageType.paper:
-                return "Бумага";
-            case garbageType.glass:
-                return "Стекло";
-            case garbageType.organic:
-                return "Органические";
-            default:
-                return ;
-        }
-    }
     return(
         <tr className="UsersInHouseRow">
             <td>{props.container.garbage_houseID}</td>

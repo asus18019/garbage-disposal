@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Garbage_houseRequests\garbage_housePostRequest;
+use App\Http\Requests\Garbage_houseRequests\garbage_housePutReqForAdmin;
 use App\Http\Requests\Garbage_houseRequests\garbage_housePutRequest;
 use App\Models\garbage_houseModel;
 use App\Models\priceModel;
@@ -96,5 +97,20 @@ class garbage_houseController extends Controller
     public function getContainersForAdmin(){
         $containers = garbage_houseModel::leftJoin('price', 'garbage_house.priceID', '=', 'price.priceID')->get();
         return response(['containers' => $containers], Response::HTTP_OK);
+    }
+
+    public function updateContainerForAdmin(garbage_housePutReqForAdmin $request){
+        if(!$this->isContainerExistAlready($request->houseID, $request->garbageID)){
+            return response(['message' => 'этот тип контейнера не установлен в этом доме'], Response::HTTP_BAD_REQUEST);
+        } else {
+            $containerInfo = garbage_houseModel::where('houseID', $request->houseID)
+                ->where('garbageID', $request->garbageID)
+                ->get();
+            $container = garbage_houseModel::find($containerInfo[0]->garbage_houseID);
+            $container->update($request->all());
+            $price = priceModel::find($containerInfo[0]->priceID);
+            $price->update($request->all());
+            return response(['message' => 'container updated'], Response::HTTP_OK);
+        }
     }
 }
