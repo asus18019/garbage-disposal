@@ -1,10 +1,35 @@
 import React, {useState} from "react";
 import { setGarbageTitle } from "./constants"
 import Error from "./error";
+import {useDispatch} from "react-redux";
+import {DELETE_CONTAINER} from "../store/containersReducer";
 
 const ContainerEditRow = (props) => {
+    const dispatch = useDispatch();
     const id = props.container.garbage_houseID;
     const [errors, setErrors] = useState([]);
+
+    const DeleteContainer = async () => {
+        const garbageID = props.container.garbageID;
+        console.log(garbageID);
+        const body = {garbageID};
+        const response = await fetch('http://127.0.0.1:8000/api/container/remove', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+            credentials: 'include',
+            body: JSON.stringify(body),
+        });
+        const content = await response.json();
+        if(response.status === 200){
+            alert('deleted')
+            dispatch({type:DELETE_CONTAINER, payload: props.container.garbage_houseID})
+        } else {
+            for (let key in content.errors) {
+                setErrors(error => [...error, content.errors[key].toString()]);
+            }
+        }
+    }
+
     const EditContainer = async () => {
         setErrors([]);
         const garbageID = props.container.garbageID;
@@ -77,7 +102,7 @@ const ContainerEditRow = (props) => {
                     </div>
                     <div className="form-group">
                         <br/>
-                        <button type="button" className="btn btn-success btnChangeContainer">Delete</button>
+                        <button type="button" className="btn btn-success btnChangeContainer" onClick={DeleteContainer}>Delete</button>
                     </div>
                 </div>
             </div>

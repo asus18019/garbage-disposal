@@ -3,8 +3,10 @@ import Error from "./error";
 import {SET_PAGE} from "../store/pageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import ContainerEditRow from "./containerEditRow";
+import CreateContainer from "./createContainer";
 
 const HouseEdit = () => {
+    const [modalActive, setModalActive] = useState(false);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const index = useSelector(state => state.page.selectedIndex);
@@ -43,6 +45,7 @@ const HouseEdit = () => {
 
     return(
         <div className="App">
+            <CreateContainer active={modalActive} setActive={setModalActive} />
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <form className="register-form regg">
@@ -51,6 +54,7 @@ const HouseEdit = () => {
                         {
                             errors.map((errorText) => <Error errorText = {errorText} />)
                         }
+                        <button type="button" className="btn btn-primary" onClick={() => setModalActive(true)}>Add container</button>
                         <div className="containerFLname">
                             <div className="form-group">
                                 <label>House ID</label>

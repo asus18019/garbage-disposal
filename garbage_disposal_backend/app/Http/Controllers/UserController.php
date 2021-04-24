@@ -28,7 +28,7 @@ class UserController extends Controller
     }
 
     public function getUsers(){
-        return USER::join('house', 'users.houseID', '=', 'house.houseID')
+        return USER::leftJoin('house', 'users.houseID', '=', 'house.houseID')
             ->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
             ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
 //            ->leftJoin('user_history', 'users.id', 'user_history.userID')

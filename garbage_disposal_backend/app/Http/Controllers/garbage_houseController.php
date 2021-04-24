@@ -37,10 +37,10 @@ class garbage_houseController extends Controller
 
     public function createContainer(garbage_housePostRequest $request){
         if($this->isContainerExistAlready($this->getModeratorHouseID(), $request->input('garbageID'))){
-            return response(['message' => 'that container already exist in house']);
+            return response(['errors' => 'that container already exist in house'], Response::HTTP_BAD_REQUEST);
         }
         elseif (!$this->isGarbageExist($request->input('garbageID'))){
-            return response(['message' => 'that type of garbage does not exist']);
+            return response(['errors' => 'that type of garbage does not exist'], Response::HTTP_BAD_REQUEST);
         }
         else {
             $price = priceModel::create([
@@ -57,12 +57,12 @@ class garbage_houseController extends Controller
         }
     }
 
-    public function removeContainer($containerID){
-        if(!$this->isContainerExistAlready($this->getModeratorHouseID(), $containerID)){
+    public function removeContainer(Request $request){
+        if(!$this->isContainerExistAlready($this->getModeratorHouseID(), $request->garbageID)){
             return response(['message' => 'этот тип контейнера не установлен в этом доме'], Response::HTTP_BAD_REQUEST); // todo change response code
         } else {
             $container = garbage_houseModel::where('houseID', $this->getModeratorHouseID())
-                ->where('garbageID', $containerID)
+                ->where('garbageID', $request->garbageID)
                 ->get();
             garbage_houseModel::find($container[0]->garbage_houseID)->delete();
             priceModel::find($container[0]->priceID)->delete();

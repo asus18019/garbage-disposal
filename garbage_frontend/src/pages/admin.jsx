@@ -10,12 +10,14 @@ import {useTranslation} from "react-i18next";
 import {Link} from 'react-router-dom';
 import HouseEdit from "../components/houseEdit";
 import HouseStats from "../components/admin_components/houseStats/houseStats";
+import AdminWelcome from "../components/admin_components/adminWelcome";
+import ImportExport from "../components/admin_components/importExport";
 
 const Admin = () => {
     const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const user = useSelector(state => state.register);
-    const page = useSelector(state => state.page);
+    const page = useSelector(state => state.page.page);
 
     useEffect(() => {
             dispatch(GetUsers());
@@ -26,12 +28,9 @@ const Admin = () => {
     )
 
     const setContent = () => {
-        switch (page.page) {
+        switch (page) {
             case 'Home':
-                return <div className="welcome_admin">
-                    <div className="alert alert-info" role="alert">
-                        Hello {user.user.first_name}
-                    </div></div>;
+                return <AdminWelcome user = {user} />;
             case 'Users':
                 return <UsersTable />;
             case 'Houses':
@@ -44,6 +43,8 @@ const Admin = () => {
                 return <HouseEdit />;
             case 'HouseStats':
                 return <HouseStats />
+            case 'ImportExport':
+                return <ImportExport />
             default:
                 return ;
         }
@@ -59,7 +60,7 @@ const Admin = () => {
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
-                        <Link onClick={() => console.log('LOGIN')}>Import/Export</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ImportExport'})}>Import/Export</Link>
                     </div>
                 </div>
                 <div className="content">

@@ -27,11 +27,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::get('users', [\App\Http\Controllers\UserController::class, 'getUsers']);
-    Route::put('users/user/update', [\App\Http\Controllers\UserController::class, 'userUpdateForAdmins']);
-    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
-    Route::get('history', [\App\Http\Controllers\UserController::class, 'getHistory']);
-    Route::get('/house/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainersForAdmin']);
-    Route::put('/house/containers/update', [\App\Http\Controllers\garbage_houseController::class, 'updateContainerForAdmin']);
+//    Route::put('users/user/update', [\App\Http\Controllers\UserController::class, 'userUpdateForAdmins']);
+//    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
+//    Route::get('history', [\App\Http\Controllers\UserController::class, 'getHistory']);
+//    Route::get('/house/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainersForAdmin']);
+//    Route::put('/house/containers/update', [\App\Http\Controllers\garbage_houseController::class, 'updateContainerForAdmin']);
 
 //    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
 
@@ -64,9 +64,16 @@ Route::group(['middleware' => ['auth:sanctum', 'role:user|moderator|admin']], fu
 Route::group(['middleware' => ['auth:sanctum', 'role:moderator|admin']], function () {
     Route::get('/house/users', [\App\Http\Controllers\houseController::class, 'getUsersInHouse']);
 
+    Route::delete('users/user/delete', [\App\Http\Controllers\UserController::class, 'userDelete']);
+    Route::put('users/user/update', [\App\Http\Controllers\UserController::class, 'userUpdateForAdmins']);
+    Route::get('history', [\App\Http\Controllers\UserController::class, 'getHistory']);
+    Route::get('/moderator/house', [\App\Http\Controllers\houseController::class, 'getModeratorHouse']);
+    Route::get('/house/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainersForAdmin']);
+    Route::put('/house/containers/update', [\App\Http\Controllers\garbage_houseController::class, 'updateContainerForAdmin']);
+
     Route::prefix('container')->group(function () { // this group of routes works only for moderator accounts
         Route::post('/create', [\App\Http\Controllers\garbage_houseController::class, 'createContainer']);
-        Route::delete('/remove/{containerID}', [\App\Http\Controllers\garbage_houseController::class, 'removeContainer']);
+        Route::delete('/remove/', [\App\Http\Controllers\garbage_houseController::class, 'removeContainer']);
         Route::put('/update/{containerID}', [\App\Http\Controllers\garbage_houseController::class, 'updateContainer']);
         Route::get('/containers', [\App\Http\Controllers\garbage_houseController::class, 'getContainers']);
     });

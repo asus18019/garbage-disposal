@@ -357,3 +357,54 @@ tr:nth-child(even) td {
 .ContainerToContainer {
     background: rgba(108, 122, 224, 0.12);
 }
+
+.ImportExportComponent {
+    margin-top: 250px;
+    flex-direction: column ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.IEButton {
+    margin: 10px;
+}
+
+.IEButton button {
+    font-size: 24px;
+    border: 1px solid rgba(128, 128, 128, 0.48);
+    background: rgba(169, 230, 39, 0.7);
+    width: 300px;
+}
+
+.modalWindow {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    z-index: 999;
+}
+
+.form-group imput {
+    opacity: 0.4;
+}
+
+.modalWindow.active {
+    transform: scale(1);
+}
+
+.modal__content {
+    padding: 50px;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.form-group-container {
+    margin: 20px;
+}

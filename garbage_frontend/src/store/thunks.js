@@ -79,3 +79,27 @@ export const GetContainers = () => async (dispatch) => {
         dispatch({type:ADD_CONTAINERS, payload: content.containers});
     }
 }
+
+export const GetUsersInHouse = () => async (dispatch) => {
+    const response = await fetch('http://127.0.0.1:8000/api/house/users', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+        credentials: 'include',
+    });
+    const content = await response.json();
+    if(response.status === 200){
+        dispatch({type: ADD_USERS, payload: content.users});
+    }
+}
+
+export const GetModeratorHouse = () => async (dispatch) => {
+    const response = await fetch('http://127.0.0.1:8000/api/moderator/house', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+        credentials: 'include',
+    });
+    const content = await response.json();
+    if(response.status === 200){
+        dispatch({type: ADD_HOUSES, payload: content.house});
+    }
+}

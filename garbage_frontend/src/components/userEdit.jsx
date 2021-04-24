@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next";
 const UserEdit = () => {
     const {t, i18n} = useTranslation();
     const [errors, setErrors] = useState([]);
+    const AuthUser = useSelector(state => state.register);
 
     const deleteUser = async () => {
         setErrors([]);
@@ -45,7 +46,7 @@ const UserEdit = () => {
     const user = useSelector(state => state.users.users.filter(word => word.userID === index)[0]);
 
     return(
-        <div className="App">{}
+        <div className="App">
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <div className="register-form regg">
@@ -68,7 +69,11 @@ const UserEdit = () => {
 
                             <div className="form-group">
                                 <label>{t("admin.users.edit.houseID")}</label>
-                                <input id="input_houseID" type="text" className="form-control" placeholder="Last Name" defaultValue={user.houseID} />
+                                {
+                                    AuthUser.role === "moderator" ?
+                                        <input disabled="disabled" id="input_houseID" type="text" className="form-control" placeholder="Last Name" defaultValue={user.houseID} /> :
+                                        <input id="input_houseID" type="text" className="form-control" placeholder="Last Name" defaultValue={user.houseID} />
+                                }
                                 <span className="hint alert-success">Password should be 8 or up chars </span>
                             </div>
                         </div>

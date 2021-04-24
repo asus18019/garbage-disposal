@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {LOGOUT_USER} from "../store/userReducer";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "../translation/i18n";
+import {SET_PAGE} from "../store/pageReducer";
 
 function Navbar(){
     const {t, i18n} = useTranslation();
@@ -19,6 +20,7 @@ function Navbar(){
         });
         const content = await response.json();
         dispatch({type: LOGOUT_USER});
+        dispatch({type: SET_PAGE, payload: 'Home'});
         console.log(content);
     }
 
