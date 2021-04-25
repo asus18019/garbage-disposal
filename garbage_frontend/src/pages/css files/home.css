@@ -408,3 +408,14 @@ tr:nth-child(even) td {
 .form-group-container {
     margin: 20px;
 }
+
+.ThrowWindow{
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    width: 50%;
+}
+
+.ThrowWrapper {
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+}

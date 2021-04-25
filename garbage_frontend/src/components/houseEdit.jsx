@@ -4,6 +4,7 @@ import {SET_PAGE} from "../store/pageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import ContainerEditRow from "./containerEditRow";
 import CreateContainer from "./createContainer";
+import {GetHouses} from "../store/thunks";
 
 const HouseEdit = () => {
     const [modalActive, setModalActive] = useState(false);
@@ -34,6 +35,7 @@ const HouseEdit = () => {
         });
         const content = await response.json();
         if(response.status === 200){
+            dispatch(GetHouses());
             dispatch({type:SET_PAGE, payload: 'Houses'});
         }
         else {

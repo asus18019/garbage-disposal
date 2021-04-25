@@ -6,6 +6,7 @@ use App\Http\Requests\HistoryRequests\HistoryPostRequest;
 use App\Models\garbage_houseModel;
 use App\Models\historyModel;
 use App\Models\User;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,7 @@ class historyController extends Controller
         $authenticatedUser= User::find($id);
 
         if(!$this->isContainerExist($authenticatedUser->houseID, $request->input('garbageID'))){
-            return response(['message' => 'в этом дома нет такого конейнера']);
+            return response(['errors' => 'в этом дома нет такого конейнера'],Response::HTTP_BAD_REQUEST );
         } else {
 
             $containerWeight = $this->isContainerFull(
@@ -42,7 +43,7 @@ class historyController extends Controller
             );
             if($containerWeight === -1)
             {
-                return response(['message' => 'контейнер заполнен']);
+                return response(['errors' => 'контейнер заполнен'], Response::HTTP_BAD_REQUEST);
             } else {
                 $result = businessLogic::businessLogic($request);
 
@@ -60,7 +61,7 @@ class historyController extends Controller
                 $container = garbage_houseModel::find($containerID[0]->garbage_houseID);
                 $container->currentFullness = $container->currentFullness + $request->input('weight');
                 $container->save();
-                return response([$garbage]);
+                return response(['message' => $garbage]);
             }
         }
     }

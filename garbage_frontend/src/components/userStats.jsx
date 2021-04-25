@@ -9,20 +9,31 @@ const UserStats = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.users);
     const index = useSelector(state => state.page.selectedIndex);
-    const userArray = users.filter(word => word.userID === index);
+    const userArray = users.filter(word => word.userID || word.id === index);
     const user = userArray[0];
     const historyArray = useSelector(state => state.users.history);
     const history = historyArray.filter(record => record.userID === index);
+    const authUser = useSelector(state => state.register.role)
 
     const [totalWeight, setTotalWeight] = useState(0);
     const [glass, setGlass] = useState(0);
     const [paper, setPaper] = useState(0);
     const [organic, setOrganic] = useState(0);
     const [unsorted, setUnsorted] = useState(0);
+    const [sum, setSum] = useState(0);
+
+    const SetPage = () => {
+        if(authUser === 'user') {
+            dispatch({type:SET_PAGE, payload: 'Home'})
+        } else {
+            dispatch({type:SET_PAGE, payload: 'Users'})
+        }
+    }
 
     useEffect(() => {
-        let glass_l = 0, paper_l = 0, organic_l = 0, totalWeight_l = 0, unsorted_l = 0;
+        let glass_l = 0, paper_l = 0, organic_l = 0, totalWeight_l = 0, unsorted_l = 0, sum_l = 0;
         for(let i = 0; i < history.length; i++) {
+            sum_l += history[i].sum
             totalWeight_l += history[i].weight;
             if(history[i].garbageID === garbageType.glass){
                 glass_l += history[i].weight;
@@ -39,7 +50,8 @@ const UserStats = () => {
         setOrganic(organic_l);
         setUnsorted(unsorted_l);
         setTotalWeight(totalWeight_l);
-    }, [])
+        setSum(sum_l);
+    })
 
     return (
         <div>
@@ -123,13 +135,17 @@ const UserStats = () => {
                                 <label>{t("userStats.total")}</label>
                                 <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={totalWeight + " kg"}/>
                             </div>
+                            <div className="form-group">
+                            <label>Total SUM</label>
+                            <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={sum + " grn"}/>
+                        </div>
                         </div>
 
                         <hr/>
 
                         <div className="form-group">
                             <div className="textReg">
-                                <p onClick={() => dispatch({type:SET_PAGE, payload: 'Users'})} className="text-center mb-0 btu">{t("admin.backtousersButton")}</p>
+                                <p onClick={SetPage} className="text-center mb-0 btu">{t("admin.backtousersButton")}</p>
                             </div>
                         </div>
 

@@ -31,6 +31,19 @@ export const GetUsers = () => async (dispatch) => {
     dispatch({type: ADD_USERS, payload: content});
 }
 
+export const GetAuthUser = () => async (dispatch) => {
+    const response = await fetch('http://127.0.0.1:8000/api/getAuthUser', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+        credentials: 'include',
+    });
+    const content = await response.json();
+    if(response.status === 401){
+        return
+    }
+    dispatch({type: ADD_USERS, payload: content});
+}
+
 export const GetHouses = () => async (dispatch) => {
     const response = await fetch('http://127.0.0.1:8000/api/house/houses', {
         method: 'GET',
@@ -46,6 +59,19 @@ export const GetHouses = () => async (dispatch) => {
 
 export const GetHistory = () => async (dispatch) => {
     const response = await fetch('http://127.0.0.1:8000/api/history', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+        credentials: 'include',
+    });
+    const content = await response.json();
+    if(response.status === 401){
+        return
+    }
+    dispatch({type: ADD_HISTORY, payload: content});
+}
+
+export const GetHistoryForUser = () => async (dispatch) => {
+    const response = await fetch('http://127.0.0.1:8000/api/historyForUser', {
         method: 'GET',
         headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
         credentials: 'include',

@@ -38,6 +38,18 @@ class UserController extends Controller
             ->get();
     }
 
+    public function getAuthUser(){
+        return USER::leftJoin('house', 'users.houseID', '=', 'house.houseID')
+            ->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->where('users.id', Auth::user()->getAuthIdentifier())
+//            ->leftJoin('user_history', 'users.id', 'user_history.userID')
+            ->select('users.id as userID', 'first_name', 'last_name', 'email', 'users.created_at', 'users.updated_at', 'houseTitle', 'location', 'name', 'users.houseID',
+//                'user_history.garbageID', 'weight', 'sum', 'user_history.created_at as historyCreated_at'
+            )
+            ->get();
+    }
+
     public function userUpdateForAdmins(UpdatePutRequest $request){
         $user = User::find($request->userID);
         $user->update($request->except('password'));
@@ -56,5 +68,9 @@ class UserController extends Controller
         $user = User::find($request->userID);
         $user->delete();
         return response(['messages' => 'success'], Response::HTTP_OK);
+    }
+
+    public function  getHistoryForUser(){
+        return historyModel::where('userID', Auth::user()->getAuthIdentifier())->get();
     }
 }

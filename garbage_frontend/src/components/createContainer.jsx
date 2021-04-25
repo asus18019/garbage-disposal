@@ -2,14 +2,15 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {GetContainers} from "../store/thunks";
 import Error from "./error";
+import {garbageType, setGarbageTitle} from "./constants";
 
 const CreateContainer = ({active, setActive}) => {
+    const [garbageID, setGarbageID]= useState(garbageType.glass);
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([]);
 
     const AddContainer = async () => {
         setErrors([]);
-        let garbageID = document.getElementById("garbage_id").value;
         let maxFullness = document.getElementById("max_f").value;
         let export_price = document.getElementById("export_p").value;
         let recycling_price = document.getElementById("recycling_p").value;
@@ -22,7 +23,7 @@ const CreateContainer = ({active, setActive}) => {
             body: JSON.stringify(body),
         });
         const content = await response.json();
-        if(response.status === 200){
+        if(response.status === 201){
             setActive(false);
             dispatch(GetContainers());
         } else if(response.status === 422){
@@ -43,7 +44,11 @@ const CreateContainer = ({active, setActive}) => {
                 <hr/>
                 <div className="form-group-container">
                     <label>Garbage ID</label>
-                    <input id="garbage_id" type="text" className="form-control" />
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected onClick={() => setGarbageID(garbageType.glass)}>{setGarbageTitle(garbageType.glass)}</option>
+                        <option onClick={() => setGarbageID(garbageType.paper)}>{setGarbageTitle(garbageType.paper)}</option>
+                        <option onClick={() => setGarbageID(garbageType.organic)}>{setGarbageTitle(garbageType.organic)}</option>
+                    </select>
                 </div>
                 <div className="form-group-container">
                     <label>Max Fullness</label>

@@ -2,7 +2,6 @@ import React from "react";
 import {connect} from 'react-redux';
 
 const Error = (props) => {
-
         return(
             <div className="form-group">
                 <div className="alert alert-danger" role="alert">

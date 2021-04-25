@@ -3,6 +3,7 @@ import {SET_PAGE} from "../store/pageReducer";
 import {useDispatch, useSelector} from "react-redux";
 import Error from "./error";
 import {useTranslation} from "react-i18next";
+import {GetUsers} from "../store/thunks";
 
 const UserEdit = () => {
     const {t, i18n} = useTranslation();
@@ -26,20 +27,21 @@ const UserEdit = () => {
             }
         });
 
-            const response = await fetch('http://127.0.0.1:8000/api/users/user/update', {
-                method: 'PUT',
-                headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
-                credentials: 'include',
-                body: JSON.stringify(body),
-            });
-            const content = await response.json();
-            if(response.status === 200){
-                dispatch({type:SET_PAGE, payload: 'Users'})
-            } else {
-                for (let key in content.errors) {
-                    setErrors(error => [...error, content.errors[key].toString()]);
-                }
+        const response = await fetch('http://127.0.0.1:8000/api/users/user/update', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest',},
+            credentials: 'include',
+            body: JSON.stringify(body),
+        });
+        const content = await response.json();
+        if(response.status === 200){
+            dispatch({type:SET_PAGE, payload: 'Users'})
+            dispatch(GetUsers());
+        } else {
+            for (let key in content.errors) {
+                setErrors(error => [...error, content.errors[key].toString()]);
             }
+        }
     }
     const dispatch = useDispatch();
     const index = useSelector(state => state.page.selectedIndex);

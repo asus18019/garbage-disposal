@@ -11,6 +11,7 @@ import UserStats from "../components/userStats";
 import HouseTable from "../components/admin_components/houses_table/houseTable";
 import HouseEdit from "../components/houseEdit";
 import HouseStats from "../components/admin_components/houseStats/houseStats";
+import ThrowOut from "../components/throwOutGarbage";
 
 const Moderator = () => {
     const {t, i18n} = useTranslation();
@@ -26,24 +27,25 @@ const Moderator = () => {
     },[])
 
     const setContent = () => {
-       switch (page) {
-           case 'Home':
-               return <AdminWelcome user = {user} />;
-           case 'Users':
-               return <UsersTable />;
-           case 'UserEdit':
-               return <UserEdit />;
-           case 'UserStats':
-               return <UserStats />;
-           case 'Houses':
-               return <HouseTable />;
-           case 'HouseEdit':
-               return <HouseEdit />;
-           case 'HouseStats':
-               return <HouseStats />
-           default:
-               return;
-
+        switch (page) {
+            case 'Home':
+                return <AdminWelcome user = {user} />;
+            case 'Users':
+                return <UsersTable />;
+            case 'UserEdit':
+                return <UserEdit />;
+            case 'UserStats':
+                return <UserStats />;
+            case 'Houses':
+                return <HouseTable />;
+            case 'HouseEdit':
+                return <HouseEdit />;
+            case 'HouseStats':
+                return <HouseStats />
+            case 'ThrowOut':
+                return <ThrowOut />
+            default:
+                return;
        }
     }
     return(
@@ -54,6 +56,7 @@ const Moderator = () => {
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>Throw garbage</Link>
                         {/*<Link onClick={() => dispatch({type: SET_PAGE, payload: 'ImportExport'})}>Import/Export</Link>*/}
                     </div>
                 </div>

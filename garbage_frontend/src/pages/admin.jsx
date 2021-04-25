@@ -12,6 +12,7 @@ import HouseEdit from "../components/houseEdit";
 import HouseStats from "../components/admin_components/houseStats/houseStats";
 import AdminWelcome from "../components/admin_components/adminWelcome";
 import ImportExport from "../components/admin_components/importExport";
+import ThrowOut from "../components/throwOutGarbage";
 
 const Admin = () => {
     const {t, i18n} = useTranslation();
@@ -45,6 +46,8 @@ const Admin = () => {
                 return <HouseStats />
             case 'ImportExport':
                 return <ImportExport />
+            case 'ThrowOut':
+                return <ThrowOut />
             default:
                 return ;
         }
@@ -60,6 +63,7 @@ const Admin = () => {
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>Throw garbage</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ImportExport'})}>Import/Export</Link>
                     </div>
                 </div>

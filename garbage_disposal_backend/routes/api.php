@@ -49,6 +49,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
 
 Route::group(['middleware' => ['auth:sanctum', 'role:user|moderator|admin']], function () {
 
+    Route::get('historyForUser', [\App\Http\Controllers\UserController::class, 'getHistoryForUser']);
+    Route::get('getAuthUser', [\App\Http\Controllers\UserController::class, 'getAuthUser']);
+
     Route::prefix('history')->group(function () {
         Route::post('/create', [\App\Http\Controllers\historyController::class, 'createRecord']);
     });

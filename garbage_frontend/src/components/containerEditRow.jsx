@@ -3,6 +3,7 @@ import { setGarbageTitle } from "./constants"
 import Error from "./error";
 import {useDispatch} from "react-redux";
 import {DELETE_CONTAINER} from "../store/containersReducer";
+import {GetContainers} from "../store/thunks";
 
 const ContainerEditRow = (props) => {
     const dispatch = useDispatch();
@@ -11,7 +12,6 @@ const ContainerEditRow = (props) => {
 
     const DeleteContainer = async () => {
         const garbageID = props.container.garbageID;
-        console.log(garbageID);
         const body = {garbageID};
         const response = await fetch('http://127.0.0.1:8000/api/container/remove', {
             method: 'DELETE',
@@ -21,8 +21,9 @@ const ContainerEditRow = (props) => {
         });
         const content = await response.json();
         if(response.status === 200){
-            alert('deleted')
-            dispatch({type:DELETE_CONTAINER, payload: props.container.garbage_houseID})
+            dispatch({type:DELETE_CONTAINER, payload: props.container.garbage_houseID}) //todo needs fixes
+            alert('deleted');
+            // dispatch(GetContainers());
         } else {
             for (let key in content.errors) {
                 setErrors(error => [...error, content.errors[key].toString()]);
@@ -56,6 +57,7 @@ const ContainerEditRow = (props) => {
         const content = await response.json();
         if(response.status === 200){
             alert('updated')
+            dispatch(GetContainers());
         } else {
             for (let key in content.errors) {
                 setErrors(error => [...error, content.errors[key].toString()]);
