@@ -26,6 +26,8 @@
   "admin.menu.home": "Home",
   "admin.menu.users": "Users",
   "admin.menu.houses": "Houses",
+  "admin.menu.throw": "Throw garbage",
+  "admin.menu.importexport": "Import / Export",
   "admin.users.filer.all": "All",
   "admin.users.filer.users": "Users",
   "admin.users.filer.moderators": "Moderators",
@@ -49,6 +51,10 @@
   "admin.users.edit.title": "User editing",
   "admin.users.edit.houseID": "house ID",
   "admin.users.edit.submit": "Submit changes",
+  "admin.users.edit.totalsum": "Total sum",
+  "admin.users.edit.kg": " kg",
+  "admin.users.edit.grn": " grn",
+  "admin.users.edit.grn.kg": " grn/kg",
 
   "admin.users.delete": "Are you sure you want to delete user \n",
 
@@ -66,6 +72,43 @@
   "admin.houses.table.description": "Description",
   "admin.houses.table.created_at": "Created at",
   "admin.houses.table.updated_at": "Updated at",
-  "admin.houses.table.edit": "Edit"
+  "admin.houses.table.edit": "Edit",
+  "admin.houses.table.show": "Show",
 
+  "admin.houses.edit.add_container": "Add a new container",
+  "admin.houses.edit.house_id": "House ID",
+  "admin.houses.edit.title": "Title",
+  "admin.houses.edit.location": "Location",
+  "admin.houses.edit.description": "Description",
+  "admin.houses.edit.submit": "Submit changes",
+  "admin.houses.edit.back": "Back to houses",
+  "admin.houses.container.create": "Add a new container",
+  "admin.houses.container.garbageID": "Garbage",
+  "admin.houses.container.max_fullness": "Max fullness",
+  "admin.houses.container.export_price": "Export price",
+  "admin.houses.container.recycling_price": "Recycling price",
+  "admin.houses.container.submit": "Save",
+
+  "admin.houses.stats.title": "House stats",
+  "admin.houses.stats.house_id": "House ID",
+  "admin.houses.stats.house_title": "Title",
+  "admin.houses.stats.location": "Location",
+  "admin.houses.stats.description": "Description",
+  "admin.houses.stats.created_at": "Created",
+  "admin.houses.stats.updated_at": "Updated",
+  "admin.houses.stats.countofpeope": "Count of people",
+  "admin.houses.stats.container.type": "Type",
+  "admin.houses.stats.container.current_fullness": "Current fullness",
+  "admin.houses.stats.container.max_fullness": "Max fullness",
+  "admin.houses.stats.container.export_price": "Export",
+  "admin.houses.stats.container.recycling_price": "Recycling",
+
+  "admin.houses.stats.no_container": "There are no containers",
+  "admin.houses.stats.no_users": "There are no users",
+
+  "thrownoutgarbage.title": "Throw out garbage",
+  "thrownoutgarbage.weight": "Weight",
+  "thrownoutgarbage.submit": "Submit",
+
+  "user.mystats": "My stats"
 }

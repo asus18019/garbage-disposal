@@ -4,8 +4,10 @@ import Error from "./error";
 import {useDispatch} from "react-redux";
 import {DELETE_CONTAINER} from "../store/containersReducer";
 import {GetContainers} from "../store/thunks";
+import {useTranslation} from "react-i18next";
 
 const ContainerEditRow = (props) => {
+    const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const id = props.container.garbage_houseID;
     const [errors, setErrors] = useState([]);
@@ -72,30 +74,30 @@ const ContainerEditRow = (props) => {
             <div className="ContainerToContainer">
                 <div className="containerFLname houseEdit">
                     <div className="form-group">
-                        <label>Container ID</label>
+                        <label>ID</label>
                         <input disabled="disabled" id={"container_id" + id} type="text" className="form-control" defaultValue={props.container.garbage_houseID} />
                     </div>
                     <div className="form-group">
-                        <label>Type</label>
+                        <label>{t("admin.houses.stats.container.type")}</label>
                         <input disabled="disabled" id={"container_type" + id} type="text" className="form-control" defaultValue={setGarbageTitle(props.container.garbageID)} />
                     </div>
                     <div className="form-group">
-                        <label>Current Fullness</label>
+                        <label>{t("admin.houses.stats.container.current_fullness")} {t("admin.users.edit.kg")}</label>
                         <input id={"container_current_f" + id} type="text" className="form-control" defaultValue={props.container.currentFullness} />
                     </div>
                     <div className="form-group">
-                        <label>Max Fullness</label>
+                        <label>{t("admin.houses.stats.container.max_fullness")} {t("admin.users.edit.kg")}</label>
                         <input id={"container_max_f" + id} type="text" className="form-control" defaultValue={props.container.maxFullness} />
                     </div>
                 </div>
 
                 <div className="containerFLname houseEdit">
                     <div className="form-group">
-                        <label>Export grn/kg</label>
+                        <label>{t("admin.houses.stats.container.export_price")} {t("admin.users.edit.grn.kg")}</label>
                         <input id={"container_export_p" + id} type="text" className="form-control" defaultValue={props.container.export_price} />
                     </div>
                     <div className="form-group">
-                        <label>Recycling grn/kg</label>
+                        <label>{t("admin.houses.stats.container.recycling_price")} {t("admin.users.edit.grn.kg")}</label>
                         <input id={"container_recycling_p" + id} type="text" className="form-control" defaultValue={props.container.recycling_price} />
                     </div>
                     <div className="form-group">

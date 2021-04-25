@@ -4,8 +4,10 @@ import {garbageType, setGarbageTitle} from "./constants";
 import {GetContainers, GetHistory, GetHistoryForUser} from "../store/thunks";
 import {useDispatch} from "react-redux";
 import Success from "./success";
+import {useTranslation} from "react-i18next";
 
 const ThrowOut = () => {
+    const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const [garbageID, setGarbageID] = useState(garbageType.glass);
     const [errors, setErrors] = useState([]);
@@ -40,7 +42,7 @@ const ThrowOut = () => {
     return(
         <div className="ThrowWrapper">
             <div className="modal__content ThrowWindow">
-                <h3>Thow out garbage</h3>
+                <h3>{t("thrownoutgarbage.title")}</h3>
                 {
                     errors.map((errorText) => <Error errorText = {errorText} />)
                 }
@@ -49,7 +51,7 @@ const ThrowOut = () => {
                 }
                 <hr/>
                 <div className="form-group-container">
-                    <label>Garbage</label>
+                    <label>{t("admin.houses.container.garbageID")}</label>
                     <select className="form-select" aria-label="Default select example">
                         <option selected onClick={() => setGarbageID(garbageType.glass)}>{setGarbageTitle(garbageType.glass)}</option>
                         <option onClick={() => setGarbageID(garbageType.paper)}>{setGarbageTitle(garbageType.paper)}</option>
@@ -57,11 +59,11 @@ const ThrowOut = () => {
                     </select>
                 </div>
                 <div className="form-group-container">
-                    <label>weight</label>
+                    <label>{t("thrownoutgarbage.weight")}</label>
                     <input id="weight" type="number" className="form-control" />
                 </div>
                 <hr/>
-                <button type="button" className="btn btn-primary" onClick={AddRecord}>Save</button>
+                <button type="button" className="btn btn-primary" onClick={AddRecord}>{t("thrownoutgarbage.submit")}</button>
             </div>
         </div>
     )

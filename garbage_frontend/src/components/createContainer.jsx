@@ -3,8 +3,10 @@ import {useDispatch} from "react-redux";
 import {GetContainers} from "../store/thunks";
 import Error from "./error";
 import {garbageType, setGarbageTitle} from "./constants";
+import {useTranslation} from "react-i18next";
 
 const CreateContainer = ({active, setActive}) => {
+    const {t, i18n} = useTranslation();
     const [garbageID, setGarbageID]= useState(garbageType.glass);
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([]);
@@ -37,13 +39,13 @@ const CreateContainer = ({active, setActive}) => {
     return(
         <div className={active ? "modalWindow active" : "modalWindow"} onClick={() => setActive(false)}>
             <div className="modal__content" onClick={e => e.stopPropagation()}>
-                <h3>Add a new container</h3>
+                <h3>{t("admin.houses.container.create")}</h3>
                 {
                     errors.map((errorText) => <Error errorText = {errorText} />)
                 }
                 <hr/>
                 <div className="form-group-container">
-                    <label>Garbage ID</label>
+                    <label>{t("admin.houses.container.garbageID")}</label>
                     <select className="form-select" aria-label="Default select example">
                         <option selected onClick={() => setGarbageID(garbageType.glass)}>{setGarbageTitle(garbageType.glass)}</option>
                         <option onClick={() => setGarbageID(garbageType.paper)}>{setGarbageTitle(garbageType.paper)}</option>
@@ -51,19 +53,19 @@ const CreateContainer = ({active, setActive}) => {
                     </select>
                 </div>
                 <div className="form-group-container">
-                    <label>Max Fullness</label>
+                    <label>{t("admin.houses.container.max_fullness")}</label>
                     <input id="max_f" type="text" className="form-control" />
                 </div>
                 <div className="form-group-container">
-                    <label>Export price</label>
+                    <label>{t("admin.houses.container.export_price")}</label>
                     <input id="export_p" type="text" className="form-control" />
                 </div>
                 <div className="form-group-container">
-                    <label>Recycling price</label>
+                    <label>{t("admin.houses.container.recycling_price")}</label>
                     <input id="recycling_p" type="text" className="form-control" />
                 </div>
                 <hr/>
-                <button type="button" className="btn btn-primary" onClick={AddContainer}>Save</button>
+                <button type="button" className="btn btn-primary" onClick={AddContainer}>{t("admin.houses.container.submit")}</button>
             </div>
         </div>
     )

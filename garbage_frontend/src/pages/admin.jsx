@@ -63,8 +63,8 @@ const Admin = () => {
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
-                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>Throw garbage</Link>
-                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ImportExport'})}>Import/Export</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>{t("admin.menu.throw")}</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ImportExport'})}>{t("admin.menu.importexport")}</Link>
                     </div>
                 </div>
                 <div className="content">

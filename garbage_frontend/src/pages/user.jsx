@@ -47,8 +47,8 @@ const User = () => {
                 <div className="div11">
                     <div id="menu" className="sidemenu">
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
-                        <Link onClick={setUser}>My stats</Link>
-                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>Throw garbage</Link>
+                        <Link onClick={setUser}>{t("user.mystats")}</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>{t("thrownoutgarbage.title")}</Link>
                     </div>
                 </div>
                 <div className="content">

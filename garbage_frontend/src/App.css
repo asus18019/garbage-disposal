@@ -115,3 +115,30 @@
 .bd-highlight {
   align-items: center;
 }
+
+.backgroud_image{
+  height: 90vh;
+  width: 100vw;
+}
+
+.img_wrapper{
+  height: 90vh;
+  width: 100vw;
+  background: url('https://news.solidwaste.ru/wp-content/uploads/2019/01/TKO.jpg') no-repeat;
+}
+
+.content_w{
+  padding: 100px;
+  padding-top: 300px;
+  height: 90vh;
+  width: 100vw;
+  background: rgba(0, 1, 1, 0.42);
+}
+
+.text{
+  padding: 50px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.74);
+  width: 700px;
+  height: 500px;
+}

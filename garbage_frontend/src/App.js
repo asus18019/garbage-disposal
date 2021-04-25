@@ -8,6 +8,7 @@ import Register from './pages/register';
 import {useDispatch} from "react-redux";
 import {GetUserByCookie} from "./store/thunks";
 import Forbidden from "./pages/forbibben";
+import Main from "./pages/main";
 
 function App() {
     const dispatch = useDispatch();
@@ -21,11 +22,13 @@ function App() {
     <div className="App">
         <BrowserRouter>
             <Navbar/>
-            <Route path='/login' component={Login}/>
-            <Route path='/register' component={Register}/>
-            <Route path='/home' component={Home}/>
-            <Route path='/forbidden' component={Forbidden}/>
+            <Route exact path='/login' component={Login}/>
+            <Route exact path='/register' component={Register}/>
+            <Route exact path='/home' component={Home}/>
+            <Route exact path='/forbidden' component={Forbidden}/>
+            <Route exact path='/' component={Main}/>
         </BrowserRouter>
+        {/*<Main />*/}
     </div>
   );
 }

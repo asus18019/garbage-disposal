@@ -26,6 +26,8 @@
   "admin.menu.home": "Головна",
   "admin.menu.users": "Користувачі",
   "admin.menu.houses": "Будинки",
+  "admin.menu.throw": "Викинути сміття",
+  "admin.menu.importexport": "Імпорт / Експорт",
   "admin.users.filer.all": "Всі",
   "admin.users.filer.users": "Користувачі",
   "admin.users.filer.moderators": "Модератори",
@@ -49,6 +51,10 @@
   "admin.users.edit.title": "Редагувати користувача",
   "admin.users.edit.houseID": "ID будинку",
   "admin.users.edit.submit": "Зберегти зміни",
+  "admin.users.edit.totalsum": "Загальна сума",
+  "admin.users.edit.kg": " кг",
+  "admin.users.edit.grn": " грн",
+  "admin.users.edit.grn.kg": " грн/кг",
 
   "admin.users.delete": "Ви впевнені, що хочете видалити користувача \n",
 
@@ -66,5 +72,43 @@
   "admin.houses.table.description": "Опис",
   "admin.houses.table.created_at": "Створений",
   "admin.houses.table.updated_at": "Оновлений",
-  "admin.houses.table.edit": "Редагувати"
+  "admin.houses.table.edit": "Редагувати",
+  "admin.houses.table.show": "Показати",
+
+  "admin.houses.edit.add_container": "Створити контейнер",
+  "admin.houses.edit.house_id": "ID Будинку",
+  "admin.houses.edit.title": "Назва",
+  "admin.houses.edit.location": "Місцезнаходження",
+  "admin.houses.edit.description": "Опис",
+  "admin.houses.edit.submit": "Підтвердити зміни",
+  "admin.houses.edit.back": "Повернутися до будинків",
+  "admin.houses.container.create": "Створити контейнер",
+  "admin.houses.container.garbageID": "Сміття",
+  "admin.houses.container.max_fullness": "Максимальна місткість",
+  "admin.houses.container.export_price": "Ціна експорту",
+  "admin.houses.container.recycling_price": "Ціна переробки",
+  "admin.houses.container.submit": "Зберегти",
+
+  "admin.houses.stats.title": "Статистика будинку",
+  "admin.houses.stats.house_id": "ID Будинку",
+  "admin.houses.stats.house_title": "Назва",
+  "admin.houses.stats.location": "Місцезнаходження",
+  "admin.houses.stats.description": "Опис",
+  "admin.houses.stats.created_at": "Створений",
+  "admin.houses.stats.updated_at": "Оновлений",
+  "admin.houses.stats.countofpeope": "Кількість жителів",
+  "admin.houses.stats.container.type": "Тип",
+  "admin.houses.stats.container.current_fullness": "Поточна наповненість",
+  "admin.houses.stats.container.max_fullness": "Максимальна наповненість",
+  "admin.houses.stats.container.export_price": "Вивезення",
+  "admin.houses.stats.container.recycling_price": "Переробка",
+
+  "admin.houses.stats.no_container": "Контейнерів немає",
+  "admin.houses.stats.no_users": "Жителів немає",
+
+  "thrownoutgarbage.title": "Викинути сміття",
+  "thrownoutgarbage.weight": "Вага",
+  "thrownoutgarbage.submit": "Підтвердити",
+
+  "user.mystats": "Моя статистика"
 }

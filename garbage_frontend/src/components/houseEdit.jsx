@@ -5,8 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import ContainerEditRow from "./containerEditRow";
 import CreateContainer from "./createContainer";
 import {GetHouses} from "../store/thunks";
+import {useTranslation} from "react-i18next";
 
 const HouseEdit = () => {
+    const {t, i18n} = useTranslation();
     const [modalActive, setModalActive] = useState(false);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
@@ -56,25 +58,25 @@ const HouseEdit = () => {
                         {
                             errors.map((errorText) => <Error errorText = {errorText} />)
                         }
-                        <button type="button" className="btn btn-primary" onClick={() => setModalActive(true)}>Add container</button>
+                        <button type="button" className="btn btn-primary" onClick={() => setModalActive(true)}>{t("admin.houses.edit.add_container")}</button>
                         <div className="containerFLname">
                             <div className="form-group">
-                                <label>House ID</label>
+                                <label>{t("admin.houses.edit.house_id")}</label>
                                 <input disabled="disabled" id="house_id" type="text" className="form-control" defaultValue={house.houseID} />
                             </div>
                             <div className="form-group">
-                                <label>Title</label>
+                                <label>{t("admin.houses.edit.title")}</label>
                                 <input id="house_title" type="text" className="form-control" defaultValue={house.houseTitle} />
                             </div>
                         </div>
 
                         <div className="form-group">
-                            <label>Location</label>
+                            <label>{t("admin.houses.edit.location")}</label>
                             <textarea id="house_location" type="text" className="form-control" defaultValue={house.location} />
                         </div>
 
                         <div className="form-group">
-                            <label>Description</label>
+                            <label>{t("admin.houses.edit.description")}</label>
                             <textarea id="house_desc" type="email" className="form-control" defaultValue={house.description} />
                         </div>
 
@@ -85,10 +87,10 @@ const HouseEdit = () => {
 
                         <div className="form-group">
                             <div className="SubmitButtonDiv">
-                                <button onClick={UpdateHouseWithParams} type="button" className="btn1 btn-primary btn-lg">Submit changes</button>
+                                <button onClick={UpdateHouseWithParams} type="button" className="btn1 btn-primary btn-lg">{t("admin.houses.edit.submit")}</button>
                             </div>
                             <div className="textReg">
-                                <p onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})} className="text-center mb-0 btu">Back to users</p>
+                                <p onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})} className="text-center mb-0 btu">{t("admin.houses.edit.back")}</p>
                             </div>
                         </div>
 

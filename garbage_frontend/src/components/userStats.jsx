@@ -115,29 +115,29 @@ const UserStats = () => {
                         <div className="containerFLname">
                             <div className="form-group">
                                 <label>{t("userStats.glass")}</label>
-                                <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={glass + " kg"}/>
+                                <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={glass + t("admin.users.edit.kg")}/>
                             </div>
                             <div className="form-group">
                                 <label>{t("userStats.paper")}</label>
-                                <input id="input_l_n" type="text" disabled="disabled" className="form-control" value={paper + " kg"}/>
+                                <input id="input_l_n" type="text" disabled="disabled" className="form-control" value={paper + t("admin.users.edit.kg")}/>
                             </div>
                             <div className="form-group">
                                 <label>{t("userStats.organic")}</label>
-                                <input id="input_houseID" type="text" disabled="disabled" className="form-control" value={organic + " kg"}/>
+                                <input id="input_houseID" type="text" disabled="disabled" className="form-control" value={organic + t("admin.users.edit.kg")}/>
                             </div>
                             <div className="form-group">
                                 <label>{t("userStats.unsorted")}</label>
-                                <input id="input_houseID" type="text" disabled="disabled" className="form-control"  value={unsorted + " kg"}/>
+                                <input id="input_houseID" type="text" disabled="disabled" className="form-control"  value={unsorted + t("admin.users.edit.kg")}/>
                             </div>
                         </div>
                         <div className="containerFLname">
                             <div className="form-group">
                                 <label>{t("userStats.total")}</label>
-                                <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={totalWeight + " kg"}/>
+                                <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={totalWeight + t("admin.users.edit.kg")}/>
                             </div>
                             <div className="form-group">
-                            <label>Total SUM</label>
-                            <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={sum + " grn"}/>
+                            <label>{t("admin.users.edit.totalsum")}</label>
+                            <input id="input_f_n" type="text" disabled="disabled" className="form-control" value={sum + t("admin.users.edit.grn")}/>
                         </div>
                         </div>
 

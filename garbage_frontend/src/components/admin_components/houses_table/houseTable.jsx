@@ -81,7 +81,7 @@ const HouseTable = () => {
                     <th>{t("admin.houses.table.created_at")}<span className="resize-handle"/></th>
                     <th>{t("admin.houses.table.updated_at")} <span className="resize-handle"/></th>
                     <th>{t("admin.houses.table.edit")}<span className="resize-handle"/></th>
-                    <th>Show<span className="resize-handle"/></th>
+                    <th>{t("admin.houses.table.show")}<span className="resize-handle"/></th>
                 </tr>
                 </thead>
                 <tbody>

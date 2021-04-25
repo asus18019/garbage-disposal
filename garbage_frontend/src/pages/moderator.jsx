@@ -56,7 +56,7 @@ const Moderator = () => {
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Home'})}>{t("admin.menu.home")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Users'})}>{t("admin.menu.users")}</Link>
                         <Link onClick={() => dispatch({type: SET_PAGE, payload: 'Houses'})}>{t("admin.menu.houses")}</Link>
-                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>Throw garbage</Link>
+                        <Link onClick={() => dispatch({type: SET_PAGE, payload: 'ThrowOut'})}>{t("thrownoutgarbage.title")}</Link>
                         {/*<Link onClick={() => dispatch({type: SET_PAGE, payload: 'ImportExport'})}>Import/Export</Link>*/}
                     </div>
                 </div>
