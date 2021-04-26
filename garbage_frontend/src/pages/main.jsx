@@ -1,14 +1,15 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
 
 const Main = () => {
-
+    const {t, i18n} = useTranslation();
     return (
         <div className="App_a">
             <div className="img_wrapper">
                 <div className="content_w">
-                    <div className="text">
+                    <div className="text1">
                         <h2>Garbage disposal</h2>
-                        <p>that a program that allows a user to devide a export and recycling price </p>
+                        <h5>{t("main.text")}</h5>
                     </div>
                 </div>
             </div>

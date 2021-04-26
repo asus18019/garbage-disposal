@@ -102,6 +102,7 @@
   "admin.houses.stats.container.max_fullness": "Максимальна наповненість",
   "admin.houses.stats.container.export_price": "Вивезення",
   "admin.houses.stats.container.recycling_price": "Переробка",
+  "admin.houses.edit.title1": "Редагування будинку",
 
   "admin.houses.stats.no_container": "Контейнерів немає",
   "admin.houses.stats.no_users": "Жителів немає",
@@ -110,5 +111,19 @@
   "thrownoutgarbage.weight": "Вага",
   "thrownoutgarbage.submit": "Підтвердити",
 
-  "user.mystats": "Моя статистика"
+  "user.mystats": "Моя статистика",
+
+  "user.houses.create.title": "Створити будинок",
+  "user.houses.create.title_house": "Назва",
+  "user.houses.create.location": "Місцезнаходження",
+  "user.houses.create.description": "Опис",
+
+  "import": "Імпорт",
+  "export": "Експорт",
+
+  "success": "Успішно викинуто ",
+  "price": "Ціна: ",
+  "hello": "Вітаємо",
+
+  "main.text": "Програмна системи, яка допомагає та контролює процес по викиданню сміття жителями житлового комплексу та його утилізацією.Серед основних функцій системи: аутентифікація користувачів, викидання сміття, та розрахунок ціни за його переробку та вивезення в залежності від ваги, типу, та встановлених в будинку цін. Модератори контролюють жителів свого будинку, а також сміттєві контейнери, можуть створювати нові або видаляти. Адміністратори контролюють роботу всієї системи."
 }

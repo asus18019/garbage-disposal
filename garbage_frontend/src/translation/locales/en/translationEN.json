@@ -102,6 +102,7 @@
   "admin.houses.stats.container.max_fullness": "Max fullness",
   "admin.houses.stats.container.export_price": "Export",
   "admin.houses.stats.container.recycling_price": "Recycling",
+  "admin.houses.edit.title1": "House editing",
 
   "admin.houses.stats.no_container": "There are no containers",
   "admin.houses.stats.no_users": "There are no users",
@@ -110,5 +111,19 @@
   "thrownoutgarbage.weight": "Weight",
   "thrownoutgarbage.submit": "Submit",
 
-  "user.mystats": "My stats"
+  "user.mystats": "My stats",
+
+  "user.houses.create.title": "Create a new house",
+  "user.houses.create.title_house": "House title",
+  "user.houses.create.location": "Location",
+  "user.houses.create.description": "Description",
+
+  "import": "Import",
+  "export": "Export",
+
+  "success": "Threw out successfully ",
+  "price": "Price: ",
+  "hello": "Hello",
+
+  "main.text": "Software system that helps and controls the process of garbage disposal by residents of the residential complex and its utilization. Moderators control the occupants of their home, and garbage containers can be created new or removed. Administrators monitor the operation of the entire system."
 }

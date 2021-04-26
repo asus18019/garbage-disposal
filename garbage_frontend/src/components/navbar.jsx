@@ -28,7 +28,7 @@ function Navbar(){
         <ul className="navbar-nav mr-auto">
             <select className="form-select" aria-label="Default select example">
                 <option selected onClick={() => changeLanguage('en')}>English</option>
-                <option onClick={() => changeLanguage('ua')}>Ukrainian</option>
+                <option onClick={() => changeLanguage('ua')}>Українська</option>
             </select>
         </ul>
 

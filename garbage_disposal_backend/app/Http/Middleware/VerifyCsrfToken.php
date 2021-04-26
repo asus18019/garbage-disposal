@@ -32,6 +32,7 @@ class VerifyCsrfToken extends Middleware
         'http://127.0.0.1:8000/api/container/remove',
         'http://127.0.0.1:8000/api/historyForUser',
         'http://127.0.0.1:8000/api/getAuthUser',
-        'http://127.0.0.1:8000/api/history/create'
+        'http://127.0.0.1:8000/api/history/create',
+        'http://127.0.0.1:8000/api/house/create'
     ];
 }

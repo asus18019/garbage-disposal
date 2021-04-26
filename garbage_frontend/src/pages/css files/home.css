@@ -328,6 +328,7 @@ tr:nth-child(even) td {
 }
 
 .welcome_admin {
+    margin-top: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;

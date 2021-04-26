@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import HouseTableRow from "./housesTableRow";
 import {useTranslation} from "react-i18next";
+import CreateHouse from "../createHouse";
 
 const HouseTable = () => {
     const {t, i18n} = useTranslation();
+    const [modalActive, setModalActive] = useState(false);
     const houses = useSelector(state => state.houses.houses);
+    const role = useSelector(state => state.register.role);
 
     const min = 150;
     const columnTypeToRatioMap = {
@@ -71,6 +74,11 @@ const HouseTable = () => {
 
     return(
         <div className="App">
+            {
+                role === "admin" ?
+                    <button type="button" className="btn btn-primary" onClick={() => setModalActive(true)}>{t("user.houses.create.title")}</button> : false
+            }
+            <CreateHouse active={modalActive} setActive={setModalActive} />
             <table className="houseTable">
                 <thead>
                 <tr>

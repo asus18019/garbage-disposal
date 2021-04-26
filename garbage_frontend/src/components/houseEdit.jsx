@@ -53,7 +53,7 @@ const HouseEdit = () => {
             <div className="row">
                 <div className="container col-sm-8 col-md-6 offset-sm-2 offset-md-3">
                     <form className="register-form regg">
-                        <h2 className="text-center">House Editing</h2>
+                        <h2 className="text-center">{t("admin.houses.edit.title1")}</h2>
                         <hr/>
                         {
                             errors.map((errorText) => <Error errorText = {errorText} />)
