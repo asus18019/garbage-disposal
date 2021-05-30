@@ -1,7 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -11,8 +15,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Base64;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -30,6 +36,9 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,32 +62,96 @@ public class MainActivity extends AppCompatActivity {
         button_first.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Instantiate the RequestQueue.
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                String url ="https://jsonplaceholder.typicode.com/comments/" + editTextTextEmailAddress.getText().toString();
+                String email = editTextTextEmailAddress.getText().toString().trim();
+                String password = editTextTextPassword.getText().toString().trim();
+                if(!email.equals("") && !password.equals("")){
+                    Map<String, String> params = new HashMap();
+                    params.put("email", email);
+                    params.put("password", password);
 
-                // Request a string response from the provided URL.
-                JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                String email = "";
-                                try {
-                                    email = response.getString("email");
+                    JSONObject parameters = new JSONObject(params);
+
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://10.0.2.2:8000/api/login", parameters,
+                            new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            String token = "";
+                            try {
+                                    token = response.getString("token");
                                 } catch (JSONException e){
                                     e.printStackTrace();
                                 }
-                                Toast.makeText(MainActivity.this, email, Toast.LENGTH_SHORT).show();
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                            Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG).show();
 
-// Add the request to the RequestQueue.
-                queue.add(objectRequest);
+                            SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("token", token);
+
+                            Intent intent = new Intent(MainActivity.this, Success.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    )
+                            //Works only for StringRequest
+//                    {
+//                         @Override
+//                        protected Map<String,String> getParams(){
+//                            Map<String,String> params = new HashMap<String, String>();
+//                            params.put("email", email);
+//                            params.put("password", password);
+//                            return params;
+//                         }
+//
+//                        @Override
+//                        public Map<String, String> getHeaders() throws AuthFailureError {
+//                            Map<String,String> params = new HashMap<String, String>();
+////                            params.put("Content-Type","application/x-www-form-urlencoded");
+//                            params.put("X-Requested-With", "XMLHttpRequest");
+//                            params.put(
+//                                    "Authorization",
+//                                    String.format("Basic %s", Base64.encodeToString(
+//                                            String.format("%s:%s", "username", "password").getBytes(), Base64.DEFAULT)));
+//                            return params;
+//                        }
+//                    }
+                    ;
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    requestQueue.add(jsonObjectRequest);
+                } else {
+                    Toast.makeText(MainActivity.this, "empty fields", Toast.LENGTH_SHORT).show();
+                }
+//                // Instantiate the RequestQueue.
+//                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+//                String url ="https://jsonplaceholder.typicode.com/comments/" + editTextTextEmailAddress.getText().toString();
+//
+//                // Request a string response from the provided URL.
+//                JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+//                        new Response.Listener<JSONObject>() {
+//                            @Override
+//                            public void onResponse(JSONObject response) {
+//                                String email = "";
+//                                try {
+//                                    email = response.getString("email");
+//                                } catch (JSONException e){
+//                                    e.printStackTrace();
+//                                }
+//                                Toast.makeText(MainActivity.this, email, Toast.LENGTH_SHORT).show();
+//                            }
+//                        }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//                 // Add the request to the RequestQueue.
+//                queue.add(objectRequest);
 
             }
         });
