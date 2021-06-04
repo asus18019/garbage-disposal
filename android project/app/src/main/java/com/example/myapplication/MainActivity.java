@@ -5,12 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -49,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    SharedPreferences sPref;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,12 +77,6 @@ public class MainActivity extends AppCompatActivity {
                                 } catch (JSONException e){
                                     e.printStackTrace();
                                 }
-//                            Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG).show();
-
-//                            SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-//                            SharedPreferences.Editor editor = sharedPreferences.edit();
-//                            editor.putString("name", "max");
-//                            editor.apply();
 
                             SharedPreferences sharedPref = getSharedPreferences("sett", MODE_PRIVATE);
                             Editor editor = sharedPref.edit();
@@ -103,65 +90,20 @@ public class MainActivity extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                            if( error instanceof AuthFailureError) {
+                                Toast.makeText(MainActivity.this, "Invalid credentials", Toast.LENGTH_LONG).show();
+                            } else if( error instanceof TimeoutError) {
+                                Toast.makeText(MainActivity.this, "Timeout error", Toast.LENGTH_LONG).show();
+                            } else if( error instanceof NetworkError) {
+                                Toast.makeText(MainActivity.this, "Network error", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
-                    )
-                            //Works only for StringRequest
-//                    {
-//                         @Override
-//                        protected Map<String,String> getParams(){
-//                            Map<String,String> params = new HashMap<String, String>();
-//                            params.put("email", email);
-//                            params.put("password", password);
-//                            return params;
-//                         }
-//
-//                        @Override
-//                        public Map<String, String> getHeaders() throws AuthFailureError {
-//                            Map<String,String> params = new HashMap<String, String>();
-////                            params.put("Content-Type","application/x-www-form-urlencoded");
-//                            params.put("X-Requested-With", "XMLHttpRequest");
-//                            params.put(
-//                                    "Authorization",
-//                                    String.format("Basic %s", Base64.encodeToString(
-//                                            String.format("%s:%s", "username", "password").getBytes(), Base64.DEFAULT)));
-//                            return params;
-//                        }
-//                    }
-                    ;
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    requestQueue.add(jsonObjectRequest);
+                    );
+                    RequestSingleton.getInstance(MainActivity.this).addToRequestQueue(jsonObjectRequest);
                 } else {
                     Toast.makeText(MainActivity.this, "empty fields", Toast.LENGTH_SHORT).show();
                 }
-//                // Instantiate the RequestQueue.
-//                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-//                String url ="https://jsonplaceholder.typicode.com/comments/" + editTextTextEmailAddress.getText().toString();
-//
-//                // Request a string response from the provided URL.
-//                JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-//                        new Response.Listener<JSONObject>() {
-//                            @Override
-//                            public void onResponse(JSONObject response) {
-//                                String email = "";
-//                                try {
-//                                    email = response.getString("email");
-//                                } catch (JSONException e){
-//                                    e.printStackTrace();
-//                                }
-//                                Toast.makeText(MainActivity.this, email, Toast.LENGTH_SHORT).show();
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//                 // Add the request to the RequestQueue.
-//                queue.add(objectRequest);
-
             }
         });
 
