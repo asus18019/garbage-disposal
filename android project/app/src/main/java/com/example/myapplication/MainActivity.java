@@ -48,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(GetToken().trim().length() > 0){
+            Intent intent = new Intent(MainActivity.this, Success.class);
+            startActivity(intent);
+            finish();
+        }
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -151,5 +157,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private String GetToken(){
+        SharedPreferences sharedPref = getSharedPreferences("sett", MODE_PRIVATE);
+        return sharedPref.getString("token", "");
     }
 }
