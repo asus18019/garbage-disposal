@@ -28,7 +28,7 @@ import java.util.Map;
 public class Success extends AppCompatActivity {
 
     TextView first_name_tv, last_name_tv, email_tv, house_tv, created_tv;
-    Button button3;
+    Button button3, button2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class Success extends AppCompatActivity {
         house_tv = findViewById(R.id.house_tv);
         created_tv = findViewById(R.id.created_tv);
         button3 = findViewById(R.id.button3);
+        button2 = findViewById(R.id.button2);
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +57,22 @@ public class Success extends AppCompatActivity {
             }
         });
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Success.this, Throw.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         SharedPreferences sharedPref = getSharedPreferences("sett", MODE_PRIVATE);
         String token = sharedPref.getString("token", "");
-        GetUser(token);
+        if(GetToken().trim().length() > 0){
+            setFields();
+        } else {
+            GetUser(token);
+        }
     }
 
     protected void GetUser(String token){
@@ -120,6 +134,11 @@ public class Success extends AppCompatActivity {
         email_tv.setText(email_tv.getText().toString() + sharedPref.getString("email", ""));
         house_tv.setText(house_tv.getText().toString() + sharedPref.getInt("houseID", 0));
         created_tv.setText(created_tv.getText().toString() + sharedPref.getString("created_at", "").substring(0, 10));
+    }
+
+    private String GetToken(){
+        SharedPreferences sharedPref = getSharedPreferences("sett", MODE_PRIVATE);
+        return sharedPref.getString("token", "");
     }
 
 }

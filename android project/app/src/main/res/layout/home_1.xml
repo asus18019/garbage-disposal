@@ -15,8 +15,8 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="200dp" android:layout_marginBottom="200dp"
-            app:layout_constraintHorizontal_bias="0.321"
-            android:textSize="18sp" app:layout_constraintVertical_bias="0.55" android:layout_marginEnd="120dp"
+            app:layout_constraintHorizontal_bias="0.402"
+            android:textSize="18sp" app:layout_constraintVertical_bias="0.56" android:layout_marginEnd="120dp"
             android:layout_marginStart="120dp" android:textColor="#000000"/>
     <TextView
             android:text="First Name: "
@@ -37,9 +37,9 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="200dp" android:layout_marginBottom="200dp"
-            app:layout_constraintHorizontal_bias="0.29" app:layout_constraintVertical_bias="0.296"
+            app:layout_constraintVertical_bias="0.309"
             android:textSize="18sp" android:layout_marginEnd="120dp" android:layout_marginStart="120dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" app:layout_constraintHorizontal_bias="0.44"/>
     <TextView
             android:text="House: "
             android:layout_width="wrap_content"
@@ -48,8 +48,8 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="200dp" android:layout_marginBottom="200dp"
-            app:layout_constraintHorizontal_bias="0.29"
-            android:textSize="18sp" app:layout_constraintVertical_bias="0.416" android:layout_marginEnd="120dp"
+            app:layout_constraintHorizontal_bias="0.216"
+            android:textSize="18sp" app:layout_constraintVertical_bias="0.446" android:layout_marginEnd="120dp"
             android:layout_marginStart="120dp" android:textColor="#000000"/>
     <TextView
             android:text="Last Name: "

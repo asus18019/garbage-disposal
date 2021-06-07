@@ -25,6 +25,10 @@
             android:label="Home"
             >
         </activity>
+        <activity android:name=".Throw"
+                  android:label="Thow garbage"
+        >
+        </activity>
     </application>
 
 </manifest>
