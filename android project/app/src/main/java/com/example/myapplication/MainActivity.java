@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.android.volley.*;
@@ -38,7 +39,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button_first;
+    Button button_first, button_first2;
     EditText editTextTextEmailAddress, editTextTextPassword;
 
     private AppBarConfiguration appBarConfiguration;
@@ -60,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
         button_first = findViewById(R.id.button_first);
         editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress);
         editTextTextPassword = findViewById(R.id.editTextTextPassword);
+        button_first2 = findViewById(R.id.button_first2);
+
+        button_first2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         button_first.setOnClickListener(new View.OnClickListener() {
             @Override

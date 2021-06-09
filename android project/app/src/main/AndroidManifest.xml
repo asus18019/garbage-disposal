@@ -29,6 +29,11 @@
                   android:label="Thow garbage"
         >
         </activity>
+
+        <activity android:name=".Register"
+                  android:label="Registration"
+        >
+        </activity>
     </application>
 
 </manifest>

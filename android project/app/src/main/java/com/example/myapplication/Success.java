@@ -27,7 +27,8 @@ import java.util.Map;
 
 public class Success extends AppCompatActivity {
 
-    TextView first_name_tv, last_name_tv, email_tv, house_tv, created_tv;
+    TextView first_name_tv, last_name_tv, email_tv, house_tv, created_tv,
+            first_name_tv2, first_name_tv3, first_name_tv4, first_name_tv5, first_name_tv6;
     Button button3, button2;
 
     @Override
@@ -43,13 +44,27 @@ public class Success extends AppCompatActivity {
         button3 = findViewById(R.id.button3);
         button2 = findViewById(R.id.button2);
 
+        SharedPreferences sharedPref1 = getSharedPreferences("sett", MODE_PRIVATE);
+
+        first_name_tv2 = findViewById(R.id.first_name_tv2);
+        first_name_tv3 = findViewById(R.id.first_name_tv3);
+        first_name_tv4 = findViewById(R.id.first_name_tv4);
+        first_name_tv5 = findViewById(R.id.first_name_tv5);
+        first_name_tv6 = findViewById(R.id.first_name_tv6);
+
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences sharedPref = getSharedPreferences("sett", MODE_PRIVATE);
                 Editor editor = sharedPref.edit();
+//                editor.clear();
                 editor.putString("token", "");
                 editor.apply();
+
+//                SharedPreferences sharedPref1 = getSharedPreferences("user", MODE_PRIVATE);
+//                Editor editor1 = sharedPref1.edit();
+//                editor1.clear();
+//                editor1.apply();
 
                 Intent intent = new Intent(Success.this, MainActivity.class);
                 startActivity(intent);
@@ -69,7 +84,8 @@ public class Success extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("sett", MODE_PRIVATE);
         String token = sharedPref.getString("token", "");
         if(GetToken().trim().length() > 0){
-            setFields();
+//            setFields();
+            GetUser(token);
         } else {
             GetUser(token);
         }
@@ -129,11 +145,17 @@ public class Success extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void setFields() {
         SharedPreferences sharedPref = getSharedPreferences("user", MODE_PRIVATE);
-        first_name_tv.setText(first_name_tv.getText().toString() + sharedPref.getString("first_name", ""));
-        last_name_tv.setText(last_name_tv.getText().toString() + sharedPref.getString("last_name", ""));
-        email_tv.setText(email_tv.getText().toString() + sharedPref.getString("email", ""));
-        house_tv.setText(house_tv.getText().toString() + sharedPref.getInt("houseID", 0));
-        created_tv.setText(created_tv.getText().toString() + sharedPref.getString("created_at", "").substring(0, 10));
+        first_name_tv2.setText(sharedPref.getString("first_name", ""));
+        first_name_tv3.setText(sharedPref.getString("last_name", ""));
+        first_name_tv4.setText(sharedPref.getString("email", ""));
+//        first_name_tv5.setText(sharedPref.getInt("houseID", 0));
+        first_name_tv6.setText(sharedPref.getString("created_at", "").substring(0, 10));
+
+//        first_name_tv.setText(first_name_tv.getText().toString() + sharedPref.getString("first_name", ""));
+//        last_name_tv.setText(last_name_tv.getText().toString() + sharedPref.getString("last_name", ""));
+//        email_tv.setText(email_tv.getText().toString() + sharedPref.getString("email", ""));
+//        house_tv.setText(house_tv.getText().toString() + sharedPref.getInt("houseID", 0));
+//        created_tv.setText(created_tv.getText().toString() + sharedPref.getString("created_at", "").substring(0, 10));
     }
 
     private String GetToken(){

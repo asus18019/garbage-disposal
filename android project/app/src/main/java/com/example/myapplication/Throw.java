@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -110,6 +112,35 @@ public class Throw extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        JSONObject message = null;
+                        try {
+                            message = response.getJSONObject("message");
+                            try {
+                                RecordModel record = new RecordModel();
+
+                                record.setUserID(message.getInt("userID"));
+                                record.setGarbageID(message.getInt("garbageID"));
+                                record.setWeight(message.getDouble("weight"));
+                                record.setSum(message.getDouble("sum"));
+                                record.setCreated_at(message.getString("created_at"));
+                                record.setHistoryID(message.getInt("historyID"));
+
+                                new AlertDialog.Builder(Throw.this)
+                                        .setTitle("Info")
+                                        .setMessage(WriteResult(record.getSum()))
+                                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                // Continue with delete operation
+                                            }
+                                        })
+                                        .setIcon(android.R.drawable.ic_dialog_info)
+                                        .show();
+                            } catch (JSONException e) {
+                                Toast.makeText(Throw.this, e.toString(), Toast.LENGTH_LONG).show();
+                        }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 //                        try {
 //                            RecordModel record = new RecordModel();
 //
@@ -125,7 +156,7 @@ public class Throw extends AppCompatActivity {
 //                        } catch (JSONException e) {
 //                            Toast.makeText(Throw.this, e.toString(), Toast.LENGTH_LONG).show();
 //                        }
-                          Toast.makeText(Throw.this, response.toString(), Toast.LENGTH_LONG).show();
+//                          Toast.makeText(Throw.this, message.toString(), Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -157,6 +188,6 @@ public class Throw extends AppCompatActivity {
     }
 
     public String WriteResult(Double sum){
-        return "Вы успешно выкинули мусор\n Сумма к оплате " + sum;
+        return "Вы успешно выкинули мусор\nСумма к оплате " + sum + "грн";
     }
 }

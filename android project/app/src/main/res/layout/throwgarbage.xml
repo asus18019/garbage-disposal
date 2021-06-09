@@ -79,7 +79,7 @@
     <EditText
             android:layout_width="182dp"
             android:layout_height="45dp"
-            android:inputType="number"
+            android:inputType="number|numberDecimal"
             android:ems="10"
             android:id="@+id/editTextNumber2"
             app:layout_constraintStart_toStartOf="parent"
